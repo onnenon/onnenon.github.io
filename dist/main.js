@@ -6350,7 +6350,7 @@ var $author$project$Main$title = F2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-							$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt pr-6')
+							$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt pr-6 font-bold')
 						]),
 					_List_fromArray(
 						[

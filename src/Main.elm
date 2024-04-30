@@ -83,7 +83,7 @@ subscriptions model =
 title : String -> String -> Html.Html msg
 title prompt title_text =
     div [ class "flex flex-row" ]
-        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt pr-6" ] [ text prompt ]
+        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt pr-6 font-bold" ] [ text prompt ]
         , h1 [ class title_font_style, class "dark:text-prime-white text-prime-black-txt" ] [ text title_text ]
         , h1 [ class title_font_style, class "text-prime-gray animate-blink" ] [ text "▊" ]
         ]
