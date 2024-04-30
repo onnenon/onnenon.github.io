@@ -8,20 +8,32 @@ import FontAwesome.Solid as Icon
 import FontAwesome.Styles as Icon
 import Html exposing (a, div, h1, text)
 import Html.Attributes exposing (..)
+import Html.Lazy exposing (lazy2)
+import Process
+import Random
+import String
+import Task
+import Time
 
 
 type alias Model =
-    { prompt : String, title_text : String }
+    { prompt : String, title_text : String, command : String, typing : Bool }
 
 
-init : Model
-init =
-    Model "$" "./onn.sh"
+type Msg
+    = TypeCommand
+    | StopTyping
+    | DelayTypeCommand Int
 
 
-main : Program () Model msg
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( Model "$" "" "./onn.sh" True, Cmd.none )
+
+
+main : Program () Model Msg
 main =
-    Browser.sandbox { init = init, update = update, view = view }
+    Browser.element { init = init, update = update, view = view, subscriptions = subscriptions }
 
 
 view : Model -> Html.Html msg
@@ -29,14 +41,43 @@ view model =
     div
         [ class "flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2" ]
         [ Icon.css
-        , title model.prompt model.title_text
+        , lazy2 title model.prompt model.title_text
         , link_icons onnen_links
         ]
 
 
-update : msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    model
+    case msg of
+        TypeCommand ->
+            ( type_command model, Random.generate DelayTypeCommand (Random.int 100 1000) )
+
+        StopTyping ->
+            ( { model | typing = False }, Cmd.none )
+
+        DelayTypeCommand delay ->
+            ( model, Process.sleep (toFloat delay) |> Task.perform (always TypeCommand) )
+
+
+type_command : Model -> Model
+type_command model =
+    if String.isEmpty model.command then
+        { model | typing = False }
+
+    else
+        { model
+            | title_text = model.title_text ++ String.left 1 model.command
+            , command = String.dropLeft 1 model.command
+        }
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    if model.typing then
+        Time.every 500 (always TypeCommand)
+
+    else
+        Sub.none
 
 
 title : String -> String -> Html.Html msg
