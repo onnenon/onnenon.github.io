@@ -12,6 +12,8 @@
   font-weight: normal;
 
   font-style: normal;
+
+  font-display: swap;
 }
 
 @font-face {
@@ -22,6 +24,8 @@
   font-weight: normal;
 
   font-style: normal;
+
+  font-display: swap;
 }
 
 @font-face {
@@ -32,6 +36,8 @@
   font-weight: bold;
 
   font-style: normal;
+
+  font-display: swap;
 }
 
 /*
