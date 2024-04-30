@@ -6423,7 +6423,7 @@ var $author$project$Main$view = function (model) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2')
+				$elm$html$Html$Attributes$class('flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight')
 			]),
 		_List_fromArray(
 			[

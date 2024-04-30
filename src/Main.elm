@@ -67,7 +67,7 @@ update msg model =
 view : Model -> Html.Html msg
 view model =
     div
-        [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2" ]
+        [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
         [ Icon.css
         , prompt_top_row prompt_top_parts
         , lazy2 title model.prompt model.title_text
