@@ -580,6 +580,11 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -590,6 +595,10 @@ video {
 
 .min-h-screen{
   min-height: 100vh;
+}
+
+.flex-auto{
+  flex: 1 1 auto;
 }
 
 .flex-shrink{
@@ -641,6 +650,20 @@ video {
   padding: .8em;
 }
 
+.p-1{
+  padding: 0.25rem;
+}
+
+.py-1{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .pr-4{
   padding-right: 1rem;
 }
@@ -671,6 +694,10 @@ video {
 
 .leading-tight{
   line-height: 1.25;
+}
+
+.leading-normal{
+  line-height: 1.5;
 }
 
 .text-prime-dark-gray{

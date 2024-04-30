@@ -8,7 +8,7 @@ import FontAwesome.Solid as Icon
 import FontAwesome.Styles as Icon
 import Html exposing (a, div, h1, text)
 import Html.Attributes exposing (..)
-import Html.Lazy exposing (lazy2)
+import Html.Lazy exposing (lazy)
 import Process
 import Random
 import Task
@@ -70,7 +70,7 @@ view model =
         [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
         [ Icon.css
         , prompt_top_row prompt_top_parts
-        , lazy2 title model.prompt model.title_text
+        , lazy title model
         , link_icons onnen_links
         ]
 
@@ -96,14 +96,22 @@ subscriptions model =
         Sub.none
 
 
-title : String -> String -> Html.Html msg
-title prompt title_text =
+title : Model -> Html.Html msg
+title model =
+    let
+        blink_class =
+            if model.typing then
+                ""
+
+            else
+                "animate-blink"
+    in
     div [ class "flex flex-row" ]
         [ h1
             [ class title_font_style, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
-            [ text prompt ]
-        , h1 [ class title_font_style, class "dark:text-prime-dark-white text-prime-light-black" ] [ text title_text ]
-        , h1 [ class title_font_style, class "text-prime-dark-gray animate-blink" ] [ text "▊" ]
+            [ text model.prompt ]
+        , h1 [ class title_font_style, class "dark:text-prime-dark-white text-prime-light-black" ] [ text model.title_text ]
+        , h1 [ class title_font_style, class "text-prime-dark-gray flex", class blink_class ] [ text "▇" ]
         ]
 
 
