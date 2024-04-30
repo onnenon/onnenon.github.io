@@ -6340,20 +6340,20 @@ var $author$project$Main$StyledText = F2(
 	});
 var $author$project$Main$prompt_top_parts = _List_fromArray(
 	[
-		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-dark-green pr-4'),
-		A2($author$project$Main$StyledText, '-', 'text-prime-dark-yellow pr-4'),
-		A2($author$project$Main$StyledText, 'sonnen', 'text-prime-dark-purple'),
-		A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-dark-blue pr-4'),
-		A2($author$project$Main$StyledText, '[', 'text-prime-dark-blue'),
-		A2($author$project$Main$StyledText, '~', 'text-prime-dark-gray'),
-		A2($author$project$Main$StyledText, ']', 'text-prime-dark-blue')
+		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-light-green dark:text-prime-dark-green pr-4'),
+		A2($author$project$Main$StyledText, '-', 'text-prime-light-yellow dark:text-prime-dark-yellow pr-4'),
+		A2($author$project$Main$StyledText, 'sonnen', 'text-prime-light-purple dark:text-prime-dark-purple'),
+		A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-light-blue dark:text-prime-dark-blue pr-4'),
+		A2($author$project$Main$StyledText, '[', 'text-prime-light-blue dark:text-prime-dark-blue'),
+		A2($author$project$Main$StyledText, '~', 'text-prime-light-gray dark:text-prime-dark-gray'),
+		A2($author$project$Main$StyledText, ']', 'text-prime-light-blue dark:text-prime-dark-blue')
 	]);
 var $author$project$Main$prompt_top_row = function (parts) {
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex md:text-4xl text-[4.5vw] font-mono mb-2')
+				$elm$html$Html$Attributes$class('flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold')
 			]),
 		A2(
 			$elm$core$List$map,
