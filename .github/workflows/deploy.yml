@@ -12,7 +12,7 @@ jobs:
         with:
           elm-version: 0.19.1
       - name: Build
-        run: make build
+        run: make build-release
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
