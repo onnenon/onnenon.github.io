@@ -4916,7 +4916,7 @@ var $author$project$Main$link_icon = function (link) {
 		$elm$html$Html$a,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex-shrink dark:text-prime-gray dark:hover:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
+				$elm$html$Html$Attributes$class('flex-shrink text-prime-gray-lt dark:text-prime-gray hover:dark:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
 				$elm$html$Html$Attributes$href(link.url)
 			]),
 		_List_fromArray(
@@ -4993,7 +4993,7 @@ var $author$project$Main$title = A2(
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-					$elm$html$Html$Attributes$class('text-prime-purple')
+					$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt')
 				]),
 			_List_fromArray(
 				[
@@ -5004,7 +5004,7 @@ var $author$project$Main$title = A2(
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-					$elm$html$Html$Attributes$class('dark:text-prime-white test-prime-black')
+					$elm$html$Html$Attributes$class('dark:text-prime-white text-prime-black-txt')
 				]),
 			_List_fromArray(
 				[

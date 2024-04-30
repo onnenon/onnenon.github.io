@@ -22,8 +22,8 @@ main =
 title : Html.Html msg
 title =
     div [ class "flex flex-row" ]
-        [ h1 [ class title_font_style, class "text-prime-purple" ] [ text "$" ]
-        , h1 [ class title_font_style, class "dark:text-prime-white test-prime-black" ] [ text "./onn.sh" ]
+        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt" ] [ text "$" ]
+        , h1 [ class title_font_style, class "dark:text-prime-white text-prime-black-txt" ] [ text "./onn.sh" ]
         , h1 [ class title_font_style, class "text-prime-gray animate-blink" ] [ text "▊" ]
         ]
 
@@ -50,7 +50,7 @@ link_icons links =
 link_icon : Link -> Html.Html msg
 link_icon link =
     a
-        [ class "flex-shrink dark:text-prime-gray dark:hover:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
+        [ class "flex-shrink text-prime-gray-lt dark:text-prime-gray hover:dark:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
         , href link.url
         ]
         [ Icon.view link.icon ]
