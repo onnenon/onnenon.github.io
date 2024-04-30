@@ -4429,23 +4429,595 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $elm$svg$Svg$Attributes$class = _VirtualDom_attribute('class');
+var $elm$core$List$foldrHelper = F4(
+	function (fn, acc, ctr, ls) {
+		if (!ls.b) {
+			return acc;
+		} else {
+			var a = ls.a;
+			var r1 = ls.b;
+			if (!r1.b) {
+				return A2(fn, a, acc);
+			} else {
+				var b = r1.a;
+				var r2 = r1.b;
+				if (!r2.b) {
+					return A2(
+						fn,
+						a,
+						A2(fn, b, acc));
+				} else {
+					var c = r2.a;
+					var r3 = r2.b;
+					if (!r3.b) {
+						return A2(
+							fn,
+							a,
+							A2(
+								fn,
+								b,
+								A2(fn, c, acc)));
+					} else {
+						var d = r3.a;
+						var r4 = r3.b;
+						var res = (ctr > 500) ? A3(
+							$elm$core$List$foldl,
+							fn,
+							acc,
+							$elm$core$List$reverse(r4)) : A4($elm$core$List$foldrHelper, fn, acc, ctr + 1, r4);
+						return A2(
+							fn,
+							a,
+							A2(
+								fn,
+								b,
+								A2(
+									fn,
+									c,
+									A2(fn, d, res))));
+					}
+				}
+			}
+		}
+	});
+var $elm$core$List$foldr = F3(
+	function (fn, acc, ls) {
+		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
+	});
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$List$concat = function (lists) {
+	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $elm$svg$Svg$Attributes$id = _VirtualDom_attribute('id');
+var $elm$virtual_dom$VirtualDom$mapAttribute = _VirtualDom_mapAttribute;
+var $elm$html$Html$Attributes$map = $elm$virtual_dom$VirtualDom$mapAttribute;
+var $elm$core$List$map = F2(
+	function (f, xs) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, acc) {
+					return A2(
+						$elm$core$List$cons,
+						f(x),
+						acc);
+				}),
+			_List_Nil,
+			xs);
+	});
+var $elm$core$Basics$never = function (_v0) {
+	never:
+	while (true) {
+		var nvr = _v0.a;
+		var $temp$_v0 = nvr;
+		_v0 = $temp$_v0;
+		continue never;
+	}
+};
+var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
+var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$svg$Svg$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$svg$Svg$title = $elm$svg$Svg$trustedNode('title');
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions = function (_v1) {
+	var icon = _v1.a.icon;
+	var outer = _v1.a.outer;
+	return A2(
+		$elm$core$Maybe$withDefault,
+		icon.size,
+		A2($elm$core$Maybe$map, $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensionsInternal, outer));
+};
+var $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensionsInternal = function (_v0) {
+	var icon = _v0.a.icon;
+	var outer = _v0.a.outer;
+	return A2(
+		$elm$core$Maybe$withDefault,
+		icon.size,
+		A2($elm$core$Maybe$map, $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions, outer));
+};
+var $elm$svg$Svg$defs = $elm$svg$Svg$trustedNode('defs');
+var $elm$svg$Svg$Attributes$height = _VirtualDom_attribute('height');
+var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
+var $elm$svg$Svg$Attributes$x = _VirtualDom_attribute('x');
+var $elm$svg$Svg$Attributes$y = _VirtualDom_attribute('y');
+var $lattyware$elm_fontawesome$FontAwesome$Svg$fill = _List_fromArray(
+	[
+		$elm$svg$Svg$Attributes$x('0'),
+		$elm$svg$Svg$Attributes$y('0'),
+		$elm$svg$Svg$Attributes$width('100%'),
+		$elm$svg$Svg$Attributes$height('100%')
+	]);
+var $elm$svg$Svg$Attributes$fill = _VirtualDom_attribute('fill');
+var $elm$svg$Svg$g = $elm$svg$Svg$trustedNode('g');
+var $elm$svg$Svg$mask = $elm$svg$Svg$trustedNode('mask');
+var $elm$svg$Svg$Attributes$mask = _VirtualDom_attribute('mask');
+var $elm$svg$Svg$Attributes$maskContentUnits = _VirtualDom_attribute('maskContentUnits');
+var $elm$svg$Svg$Attributes$maskUnits = _VirtualDom_attribute('maskUnits');
+var $elm$core$Basics$not = _Basics_not;
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$add = F2(
+	function (transform, combined) {
+		switch (transform.$) {
+			case 'Scale':
+				var by = transform.a;
+				return _Utils_update(
+					combined,
+					{size: combined.size + by});
+			case 'Reposition':
+				var axis = transform.a;
+				var by = transform.b;
+				var _v1 = function () {
+					if (axis.$ === 'Vertical') {
+						return _Utils_Tuple2(0, by);
+					} else {
+						return _Utils_Tuple2(by, 0);
+					}
+				}();
+				var x = _v1.a;
+				var y = _v1.b;
+				return _Utils_update(
+					combined,
+					{x: combined.x + x, y: combined.y + y});
+			case 'Rotate':
+				var rotation = transform.a;
+				return _Utils_update(
+					combined,
+					{rotate: combined.rotate + rotation});
+			default:
+				var axis = transform.a;
+				if (axis.$ === 'Vertical') {
+					return _Utils_update(
+						combined,
+						{flipY: !combined.flipY});
+				} else {
+					return _Utils_update(
+						combined,
+						{flipX: !combined.flipX});
+				}
+		}
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize = 16;
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform = {flipX: false, flipY: false, rotate: 0, size: $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize, x: 0, y: 0};
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$combine = function (transforms) {
+	return A3($elm$core$List$foldl, $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$add, $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform, transforms);
+};
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaningfulTransform = function (transforms) {
+	var combined = $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$combine(transforms);
+	return _Utils_eq(combined, $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform) ? $elm$core$Maybe$Nothing : $elm$core$Maybe$Just(combined);
+};
+var $elm$svg$Svg$rect = $elm$svg$Svg$trustedNode('rect');
+var $elm$core$String$fromFloat = _String_fromNumber;
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var $elm$svg$Svg$Attributes$transform = _VirtualDom_attribute('transform');
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$transformForSvg = F3(
+	function (containerWidth, iconWidth, transform) {
+		var path = 'translate(' + ($elm$core$String$fromFloat((iconWidth / 2) * (-1)) + ' -256)');
+		var outer = 'translate(' + ($elm$core$String$fromFloat(containerWidth / 2) + ' 256)');
+		var innerTranslate = 'translate(' + ($elm$core$String$fromFloat(transform.x * 32) + (',' + ($elm$core$String$fromFloat(transform.y * 32) + ') ')));
+		var innerRotate = 'rotate(' + ($elm$core$String$fromFloat(transform.rotate) + ' 0 0)');
+		var flipY = transform.flipY ? (-1) : 1;
+		var scaleY = (transform.size / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipY;
+		var flipX = transform.flipX ? (-1) : 1;
+		var scaleX = (transform.size / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipX;
+		var innerScale = 'scale(' + ($elm$core$String$fromFloat(scaleX) + (', ' + ($elm$core$String$fromFloat(scaleY) + ') ')));
+		return {
+			inner: $elm$svg$Svg$Attributes$transform(
+				_Utils_ap(
+					innerTranslate,
+					_Utils_ap(innerScale, innerRotate))),
+			outer: $elm$svg$Svg$Attributes$transform(outer),
+			path: $elm$svg$Svg$Attributes$transform(path)
+		};
+	});
+var $elm$svg$Svg$Attributes$d = _VirtualDom_attribute('d');
+var $elm$svg$Svg$path = $elm$svg$Svg$trustedNode('path');
+var $lattyware$elm_fontawesome$FontAwesome$Svg$viewPath = F2(
+	function (attrs, d) {
+		return A2(
+			$elm$svg$Svg$path,
+			A2(
+				$elm$core$List$cons,
+				$elm$svg$Svg$Attributes$d(d),
+				attrs),
+			_List_Nil);
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Svg$viewPaths = F2(
+	function (attrs, _v0) {
+		var paths = _v0.paths;
+		if (paths.b.$ === 'Nothing') {
+			var only = paths.a;
+			var _v2 = paths.b;
+			return A2($lattyware$elm_fontawesome$FontAwesome$Svg$viewPath, attrs, only);
+		} else {
+			var secondary = paths.a;
+			var primary = paths.b.a;
+			return A2(
+				$elm$svg$Svg$g,
+				_List_fromArray(
+					[
+						$elm$svg$Svg$Attributes$class('fa-group')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$lattyware$elm_fontawesome$FontAwesome$Svg$viewPath,
+						A2(
+							$elm$core$List$cons,
+							$elm$svg$Svg$Attributes$class('fa-secondary'),
+							attrs),
+						secondary),
+						A2(
+						$lattyware$elm_fontawesome$FontAwesome$Svg$viewPath,
+						A2(
+							$elm$core$List$cons,
+							$elm$svg$Svg$Attributes$class('fa-primary'),
+							attrs),
+						primary)
+					]));
+		}
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Svg$viewWithTransform = F3(
+	function (color, _v0, icon) {
+		var outer = _v0.outer;
+		var inner = _v0.inner;
+		var path = _v0.path;
+		return A2(
+			$elm$svg$Svg$g,
+			_List_fromArray(
+				[outer]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$svg$Svg$g,
+					_List_fromArray(
+						[inner]),
+					_List_fromArray(
+						[
+							A2(
+							$lattyware$elm_fontawesome$FontAwesome$Svg$viewPaths,
+							_List_fromArray(
+								[
+									$elm$svg$Svg$Attributes$fill(color),
+									path
+								]),
+							icon)
+						]))
+				]));
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Svg$viewInColor = F2(
+	function (color, fullIcon) {
+		var icon = fullIcon.a.icon;
+		var transforms = fullIcon.a.transforms;
+		var id = fullIcon.a.id;
+		var outer = fullIcon.a.outer;
+		var combinedTransforms = $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaningfulTransform(transforms);
+		var _v0 = icon.size;
+		var width = _v0.a;
+		var _v1 = $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions(fullIcon);
+		var topLevelWidth = _v1.a;
+		if (combinedTransforms.$ === 'Just') {
+			var meaningfulTransform = combinedTransforms.a;
+			var svgTransform = A3($lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$transformForSvg, topLevelWidth, width, meaningfulTransform);
+			if (outer.$ === 'Just') {
+				var outerIcon = outer.a;
+				return A4($lattyware$elm_fontawesome$FontAwesome$Svg$viewMaskedWithTransform, color, svgTransform, icon, outerIcon);
+			} else {
+				return A3($lattyware$elm_fontawesome$FontAwesome$Svg$viewWithTransform, color, svgTransform, icon);
+			}
+		} else {
+			return A2(
+				$lattyware$elm_fontawesome$FontAwesome$Svg$viewPaths,
+				_List_fromArray(
+					[
+						$elm$svg$Svg$Attributes$fill(color)
+					]),
+				icon);
+		}
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Svg$viewMaskedWithTransform = F4(
+	function (color, transforms, exclude, include) {
+		var id = include.a.id;
+		var alwaysId = A2($elm$core$Maybe$withDefault, '', id);
+		var clipId = 'clip-' + alwaysId;
+		var maskId = 'mask-' + alwaysId;
+		var maskTag = A2(
+			$elm$svg$Svg$mask,
+			A2(
+				$elm$core$List$cons,
+				$elm$svg$Svg$Attributes$id(maskId),
+				A2(
+					$elm$core$List$cons,
+					$elm$svg$Svg$Attributes$maskUnits('userSpaceOnUse'),
+					A2(
+						$elm$core$List$cons,
+						$elm$svg$Svg$Attributes$maskContentUnits('userSpaceOnUse'),
+						$lattyware$elm_fontawesome$FontAwesome$Svg$fill))),
+			_List_fromArray(
+				[
+					A2($lattyware$elm_fontawesome$FontAwesome$Svg$viewInColor, 'white', include),
+					A3($lattyware$elm_fontawesome$FontAwesome$Svg$viewWithTransform, 'black', transforms, exclude)
+				]));
+		var defs = A2(
+			$elm$svg$Svg$defs,
+			_List_Nil,
+			_List_fromArray(
+				[maskTag]));
+		var rect = A2(
+			$elm$svg$Svg$rect,
+			A2(
+				$elm$core$List$cons,
+				$elm$svg$Svg$Attributes$fill(color),
+				A2(
+					$elm$core$List$cons,
+					$elm$svg$Svg$Attributes$mask('url(#' + (maskId + ')')),
+					$lattyware$elm_fontawesome$FontAwesome$Svg$fill)),
+			_List_Nil);
+		return A2(
+			$elm$svg$Svg$g,
+			_List_Nil,
+			_List_fromArray(
+				[defs, rect]));
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Svg$view = $lattyware$elm_fontawesome$FontAwesome$Svg$viewInColor('currentColor');
+var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
+var $lattyware$elm_fontawesome$FontAwesome$internalView = F2(
+	function (fullIcon, extraAttributes) {
+		var icon = fullIcon.a.icon;
+		var transforms = fullIcon.a.transforms;
+		var role = fullIcon.a.role;
+		var id = fullIcon.a.id;
+		var title = fullIcon.a.title;
+		var outer = fullIcon.a.outer;
+		var attributes = fullIcon.a.attributes;
+		var contents = $lattyware$elm_fontawesome$FontAwesome$Svg$view(fullIcon);
+		var _v0 = function () {
+			if (title.$ === 'Just') {
+				var givenTitle = title.a;
+				var titleId = A2($elm$core$Maybe$withDefault, '', id) + '-title';
+				return _Utils_Tuple2(
+					A2($elm$html$Html$Attributes$attribute, 'aria-labelledby', titleId),
+					_List_fromArray(
+						[
+							A2(
+							$elm$svg$Svg$title,
+							_List_fromArray(
+								[
+									$elm$svg$Svg$Attributes$id(titleId)
+								]),
+							_List_fromArray(
+								[
+									$elm$svg$Svg$text(givenTitle)
+								])),
+							contents
+						]));
+			} else {
+				return _Utils_Tuple2(
+					A2($elm$html$Html$Attributes$attribute, 'aria-hidden', 'true'),
+					_List_fromArray(
+						[contents]));
+			}
+		}();
+		var semantics = _v0.a;
+		var potentiallyTitledContents = _v0.b;
+		var _v2 = $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions(fullIcon);
+		var width = _v2.a;
+		var height = _v2.b;
+		var aspectRatio = $elm$core$Basics$ceiling((width / height) * 16);
+		var classes = _List_fromArray(
+			[
+				'svg-inline--fa',
+				'fa-' + icon.name,
+				'fa-w-' + $elm$core$String$fromInt(aspectRatio)
+			]);
+		return A2(
+			$elm$svg$Svg$svg,
+			$elm$core$List$concat(
+				_List_fromArray(
+					[
+						_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$attribute, 'role', role),
+							A2($elm$html$Html$Attributes$attribute, 'xmlns', 'http://www.w3.org/2000/svg'),
+							$elm$svg$Svg$Attributes$viewBox(
+							'0 0 ' + ($elm$core$String$fromInt(width) + (' ' + $elm$core$String$fromInt(height)))),
+							semantics
+						]),
+						A2($elm$core$List$map, $elm$svg$Svg$Attributes$class, classes),
+						A2(
+						$elm$core$List$map,
+						$elm$html$Html$Attributes$map($elm$core$Basics$never),
+						attributes),
+						extraAttributes
+					])),
+			potentiallyTitledContents);
+	});
+var $lattyware$elm_fontawesome$FontAwesome$view = function (presentation) {
+	return A2($lattyware$elm_fontawesome$FontAwesome$internalView, presentation, _List_Nil);
+};
+var $author$project$Main$link_icon = function (link) {
+	return A2(
+		$elm$html$Html$a,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('flex-auto text-cursor-gray hover:text-prime-white md:max-w-[2em] max-w-[6vw] m-8'),
+				$elm$html$Html$Attributes$href(link.url)
+			]),
+		_List_fromArray(
+			[
+				$lattyware$elm_fontawesome$FontAwesome$view(link.icon)
+			]));
+};
+var $author$project$Main$link_icons = function (links) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('flex flex-row justify-start')
+			]),
+		A2($elm$core$List$map, $author$project$Main$link_icon, links));
+};
+var $author$project$Main$Link = F3(
+	function (name, url, icon) {
+		return {icon: icon, name: name, url: url};
+	});
+var $lattyware$elm_fontawesome$FontAwesome$IconDef = F4(
+	function (prefix, name, size, paths) {
+		return {name: name, paths: paths, prefix: prefix, size: size};
+	});
+var $lattyware$elm_fontawesome$FontAwesome$Solid$Definitions$envelope = A4(
+	$lattyware$elm_fontawesome$FontAwesome$IconDef,
+	'fas',
+	'envelope',
+	_Utils_Tuple2(512, 512),
+	_Utils_Tuple2('M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z', $elm$core$Maybe$Nothing));
+var $elm$core$Basics$identity = function (x) {
+	return x;
+};
+var $lattyware$elm_fontawesome$FontAwesome$Internal$Icon = function (a) {
+	return {$: 'Icon', a: a};
+};
+var $lattyware$elm_fontawesome$FontAwesome$present = function (icon) {
+	return $lattyware$elm_fontawesome$FontAwesome$Internal$Icon(
+		{attributes: _List_Nil, icon: icon, id: $elm$core$Maybe$Nothing, outer: $elm$core$Maybe$Nothing, role: 'img', title: $elm$core$Maybe$Nothing, transforms: _List_Nil});
+};
+var $lattyware$elm_fontawesome$FontAwesome$Solid$envelope = $lattyware$elm_fontawesome$FontAwesome$present($lattyware$elm_fontawesome$FontAwesome$Solid$Definitions$envelope);
+var $lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$github = A4(
+	$lattyware$elm_fontawesome$FontAwesome$IconDef,
+	'fab',
+	'github',
+	_Utils_Tuple2(496, 512),
+	_Utils_Tuple2('M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z', $elm$core$Maybe$Nothing));
+var $lattyware$elm_fontawesome$FontAwesome$Brands$github = $lattyware$elm_fontawesome$FontAwesome$present($lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$github);
+var $lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$linkedin = A4(
+	$lattyware$elm_fontawesome$FontAwesome$IconDef,
+	'fab',
+	'linkedin',
+	_Utils_Tuple2(448, 512),
+	_Utils_Tuple2('M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z', $elm$core$Maybe$Nothing));
+var $lattyware$elm_fontawesome$FontAwesome$Brands$linkedin = $lattyware$elm_fontawesome$FontAwesome$present($lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$linkedin);
+var $author$project$Main$onnen_links = _List_fromArray(
+	[
+		A3($author$project$Main$Link, 'GitHub', 'https://github.com/onnenon', $lattyware$elm_fontawesome$FontAwesome$Brands$github),
+		A3($author$project$Main$Link, 'LinkedIn', 'https://linkedin.com/in/sconnen', $lattyware$elm_fontawesome$FontAwesome$Brands$linkedin),
+		A3($author$project$Main$Link, 'Email', 'mailto:stephen.onnen@gmail.com', $lattyware$elm_fontawesome$FontAwesome$Solid$envelope)
+	]);
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$main = A2(
+var $author$project$Main$title_font_style = 'flex font-mono select-none md:text-8xl text-[14vw]';
+var $author$project$Main$title = A2(
 	$elm$html$Html$div,
-	_List_Nil,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('flex flex-row')
+		]),
 	_List_fromArray(
 		[
 			A2(
 			$elm$html$Html$h1,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('font-mono text-8xl text-red-700')
+					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
+					$elm$html$Html$Attributes$class('text-prime-purple')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('$')
+				])),
+			A2(
+			$elm$html$Html$h1,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
+					$elm$html$Html$Attributes$class('text-prime-white')
 				]),
 			_List_fromArray(
 				[
 					$elm$html$Html$text('./onn.sh')
+				])),
+			A2(
+			$elm$html$Html$h1,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
+					$elm$html$Html$Attributes$class('text-cursor-gray animate-blink')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('▊')
 				]))
+		]));
+var $author$project$Main$main = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('flex flex-col min-h-screen bg-prime-bg p-2')
+		]),
+	_List_fromArray(
+		[
+			$author$project$Main$title,
+			$author$project$Main$link_icons($author$project$Main$onnen_links)
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));

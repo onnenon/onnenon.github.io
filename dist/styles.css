@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+
 /*
 ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
@@ -16,7 +22,7 @@
   /* 2 */
   border-style: solid;
   /* 2 */
-  border-color: #e5e7eb;
+  border-color: currentColor;
   /* 2 */
 }
 
@@ -46,7 +52,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Titillium Web, Open Sans, sans-serif;
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -135,7 +141,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: Ubuntu Mono, monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -444,7 +450,7 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -494,7 +500,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -544,16 +550,255 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.m-4{
+  margin: 1rem;
 }
 
-.text-8xl {
+.m-8{
+  margin: 2rem;
+}
+
+.mx-8{
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.flex{
+  display: flex;
+}
+
+.min-h-screen{
+  min-height: 100vh;
+}
+
+.w-16{
+  width: 4rem;
+}
+
+.max-w-8{
+  max-width: 2rem;
+}
+
+.max-w-16{
+  max-width: 4rem;
+}
+
+.max-w-64{
+  max-width: 16rem;
+}
+
+.max-w-10{
+  max-width: 2.5rem;
+}
+
+.max-w-12{
+  max-width: 3rem;
+}
+
+.max-w-32{
+  max-width: 8rem;
+}
+
+.max-w-24{
+  max-width: 6rem;
+}
+
+.max-w-\[14vw\]{
+  max-width: 14vw;
+}
+
+.max-w-\[10vw\]{
+  max-width: 10vw;
+}
+
+.max-w-\[8vw\]{
+  max-width: 8vw;
+}
+
+.max-w-\[6vw\]{
+  max-width: 6vw;
+}
+
+.flex-1{
+  flex: 1 1 0%;
+}
+
+.flex-auto{
+  flex: 1 1 auto;
+}
+
+.flex-initial{
+  flex: 0 1 auto;
+}
+
+@keyframes blink{
+  0%, 100%{
+    color: transparent;
+  }
+
+  50%{
+    color: rgb(168, 171, 177);
+  }
+}
+
+.animate-blink{
+  animation: blink 1.2s step-end infinite;
+}
+
+.select-none{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.justify-start{
+  justify-content: flex-start;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.bg-prime-bg{
+  background-color: 0d1117;
+}
+
+.p-8{
+  padding: 2rem;
+}
+
+.p-4{
+  padding: 1rem;
+}
+
+.p-0{
+  padding: 0px;
+}
+
+.p-0\.5{
+  padding: 0.125rem;
+}
+
+.p-1{
+  padding: 0.25rem;
+}
+
+.p-2{
+  padding: 0.5rem;
+}
+
+.py-8{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-4{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pr-4{
+  padding-right: 1rem;
+}
+
+.font-mono{
+  font-family: Ubuntu Mono, monospace;
+}
+
+.text-8xl{
   font-size: 6rem;
   line-height: 1;
 }
 
-.text-red-700 {
-  --tw-text-opacity: 1;
-  color: rgb(185 28 28 / var(--tw-text-opacity));
+.text-\[14vw\]{
+  font-size: 14vw;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-cursor-gray{
+  color: 8b949e;
+}
+
+.text-prime-purple{
+  color: 8a63d2;
+}
+
+.text-prime-white{
+  color: c9d1d9;
+}
+
+.hover\:text-prime-white:hover{
+  color: c9d1d9;
+}
+
+@media (min-width: 768px){
+  .md\:max-h-\[2em\]{
+    max-height: 2em;
+  }
+
+  .md\:max-h-\[2rem\]{
+    max-height: 2rem;
+  }
+
+  .md\:max-h-\[1em\]{
+    max-height: 1em;
+  }
+
+  .md\:max-h-8{
+    max-height: 2rem;
+  }
+
+  .md\:max-h-7{
+    max-height: 1.75rem;
+  }
+
+  .md\:max-w-24{
+    max-width: 6rem;
+  }
+
+  .md\:max-w-7{
+    max-width: 1.75rem;
+  }
+
+  .md\:max-w-\[2em\]{
+    max-width: 2em;
+  }
+
+  .md\:max-w-\[1em\]{
+    max-width: 1em;
+  }
+
+  .md\:max-w-\[3em\]{
+    max-width: 3em;
+  }
+
+  .md\:text-\[14vw\]{
+    font-size: 14vw;
+  }
+
+  .md\:text-8xl{
+    font-size: 6rem;
+    line-height: 1;
+  }
 }
