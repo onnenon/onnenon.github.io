@@ -5250,7 +5250,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		A4($author$project$Main$Model, '$', '', './onn.sh', true),
+		A4($author$project$Main$Model, 'λ', '', './onn.sh', true),
 		$elm$core$Platform$Cmd$none);
 };
 var $author$project$Main$TypeCommand = {$: 'TypeCommand'};
@@ -6350,7 +6350,7 @@ var $author$project$Main$title = F2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-							$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt')
+							$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt pr-6')
 						]),
 					_List_fromArray(
 						[

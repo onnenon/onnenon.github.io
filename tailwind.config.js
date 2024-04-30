@@ -6,7 +6,8 @@ module.exports = {
     fontFamily: {
       sans: ["Titillium Web, Open Sans", "sans-serif"],
       serif: ["Merriweather", "serif"],
-      mono: ["Ubuntu Mono", "monospace"],
+      mono: ["Cascadia Code", "monospace"],
+      // mono: ["Ubuntu Mono", "monospace"],
     },
     colors: {
       "prime-white": "#e6edf3",

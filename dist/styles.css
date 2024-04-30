@@ -4,6 +4,16 @@
 
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 
+@font-face {
+  font-family: "Cascadia Code";
+
+  src: url("fonts/CascadiaCode.woff2") format("woff2");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
 /*
 ! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
@@ -141,7 +151,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: Ubuntu Mono, monospace;
+  font-family: Cascadia Code, monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -607,8 +617,20 @@ video {
   padding: .8em;
 }
 
+.pr-4{
+  padding-right: 1rem;
+}
+
+.pr-5{
+  padding-right: 1.25rem;
+}
+
+.pr-6{
+  padding-right: 1.5rem;
+}
+
 .font-mono{
-  font-family: Ubuntu Mono, monospace;
+  font-family: Cascadia Code, monospace;
 }
 
 .text-\[14vw\]{

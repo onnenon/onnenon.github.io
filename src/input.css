@@ -2,6 +2,13 @@
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("fonts/CascadiaCode.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
