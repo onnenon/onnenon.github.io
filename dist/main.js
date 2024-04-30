@@ -5246,11 +5246,12 @@ var $author$project$Main$Model = F4(
 	function (prompt, title_text, command, typing) {
 		return {command: command, prompt: prompt, title_text: title_text, typing: typing};
 	});
+var $author$project$Main$get_prompt = 'λ';
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		A4($author$project$Main$Model, 'λ', '', './onn.sh', true),
+		A4($author$project$Main$Model, $author$project$Main$get_prompt, '', './onn.sh', true),
 		$elm$core$Platform$Cmd$none);
 };
 var $author$project$Main$TypeCommand = {$: 'TypeCommand'};

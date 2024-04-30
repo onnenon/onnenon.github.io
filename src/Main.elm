@@ -28,7 +28,12 @@ type Msg
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model "λ" "" "./onn.sh" True, Cmd.none )
+    ( Model get_prompt "" "./onn.sh" True, Cmd.none )
+
+
+get_prompt : String
+get_prompt =
+    "λ"
 
 
 main : Program () Model Msg
