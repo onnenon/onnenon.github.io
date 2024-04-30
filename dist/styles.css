@@ -724,6 +724,11 @@ video {
   color: rgb(72 79 88 / var(--tw-text-opacity));
 }
 
+.text-prime-light-red{
+  --tw-text-opacity: 1;
+  color: rgb(207 33 46 / var(--tw-text-opacity));
+}
+
 .hover\:text-prime-light-black:hover{
   --tw-text-opacity: 1;
   color: rgb(31 35 40 / var(--tw-text-opacity));
@@ -779,6 +784,11 @@ video {
   .dark\:text-prime-dark-blue{
     --tw-text-opacity: 1;
     color: rgb(121 192 255 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-prime-dark-red{
+    --tw-text-opacity: 1;
+    color: rgb(255 123 114 / var(--tw-text-opacity));
   }
 
   .hover\:dark\:text-prime-dark-white:hover{

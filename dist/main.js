@@ -6275,7 +6275,7 @@ var $author$project$Main$link_icon = function (link) {
 		_List_fromArray(
 			[
 				$elm$html$Html$Attributes$class('flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
-				$elm$html$Html$Attributes$class('text-prime-gray-lt dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black'),
+				$elm$html$Html$Attributes$class('text-prime-light-gray dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black'),
 				$elm$html$Html$Attributes$href(link.url)
 			]),
 		_List_fromArray(
@@ -6340,7 +6340,7 @@ var $author$project$Main$StyledText = F2(
 	});
 var $author$project$Main$prompt_top_parts = _List_fromArray(
 	[
-		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-light-green dark:text-prime-dark-green pr-4'),
+		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-light-red dark:text-prime-dark-red pr-4'),
 		A2($author$project$Main$StyledText, '-', 'text-prime-light-yellow dark:text-prime-dark-yellow pr-4'),
 		A2($author$project$Main$StyledText, 'sonnen', 'text-prime-light-purple dark:text-prime-dark-purple'),
 		A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-light-blue dark:text-prime-dark-blue pr-4'),
