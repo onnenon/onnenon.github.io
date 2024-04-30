@@ -1,5 +1,6 @@
 module Main exposing (main)
 
+import Browser
 import FontAwesome as Icon exposing (Icon)
 import FontAwesome.Attributes as Icon
 import FontAwesome.Brands as Icon
@@ -9,21 +10,40 @@ import Html exposing (a, div, h1, text)
 import Html.Attributes exposing (..)
 
 
-main : Html.Html msg
+type alias Model =
+    { prompt : String, title_text : String }
+
+
+init : Model
+init =
+    Model "$" "./onn.sh"
+
+
+main : Program () Model msg
 main =
+    Browser.sandbox { init = init, update = update, view = view }
+
+
+view : Model -> Html.Html msg
+view model =
     div
         [ class "flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2" ]
         [ Icon.css
-        , title
+        , title model.prompt model.title_text
         , link_icons onnen_links
         ]
 
 
-title : Html.Html msg
-title =
+update : msg -> Model -> Model
+update msg model =
+    model
+
+
+title : String -> String -> Html.Html msg
+title prompt title_text =
     div [ class "flex flex-row" ]
-        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt" ] [ text "$" ]
-        , h1 [ class title_font_style, class "dark:text-prime-white text-prime-black-txt" ] [ text "./onn.sh" ]
+        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt" ] [ text prompt ]
+        , h1 [ class title_font_style, class "dark:text-prime-white text-prime-black-txt" ] [ text title_text ]
         , h1 [ class title_font_style, class "text-prime-gray animate-blink" ] [ text "▊" ]
         ]
 
