@@ -11,7 +11,7 @@ module.exports = {
     colors: {
       "prime-dark-black": "#0d1117",
       "prime-dark-purple": "#d2a8ff",
-      "prime-dark-gray": "#b1bac4",
+      "prime-dark-gray": "#8b949e",
       "prime-dark-green": "#56d364",
       "prime-dark-yellow": "#ffa656",
       "prime-dark-white": "#e6edf3",
@@ -30,7 +30,7 @@ module.exports = {
       keyframes: {
         blink: {
           "0%, 100%": { color: "transparent" },
-          "50%": { color: "rgb(168, 171, 177)" },
+          "50%": { color: "#8b949e" },
         },
       },
       animation: {
