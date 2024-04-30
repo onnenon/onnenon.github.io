@@ -1,8 +1,10 @@
 module Main exposing (main)
 
 import FontAwesome as Icon exposing (Icon)
+import FontAwesome.Attributes as Icon
 import FontAwesome.Brands as Icon
 import FontAwesome.Solid as Icon
+import FontAwesome.Styles as Icon
 import Html exposing (a, div, h1, text)
 import Html.Attributes exposing (..)
 
@@ -11,7 +13,8 @@ main : Html.Html msg
 main =
     div
         [ class "flex flex-col min-h-screen bg-prime-bg p-2" ]
-        [ title
+        [ Icon.css
+        , title
         , link_icons onnen_links
         ]
 
@@ -47,7 +50,7 @@ link_icons links =
 link_icon : Link -> Html.Html msg
 link_icon link =
     a
-        [ class "flex-auto text-cursor-gray hover:text-prime-white md:max-w-[2em] max-w-[6vw] m-8"
+        [ class "flex-shrink text-cursor-gray hover:text-prime-white md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
         , href link.url
         ]
         [ Icon.view link.icon ]
