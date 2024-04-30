@@ -11,7 +11,6 @@ import Html.Attributes exposing (..)
 import Html.Lazy exposing (lazy2)
 import Process
 import Random
-import String
 import Task
 import Time
 
@@ -20,35 +19,36 @@ type alias Model =
     { prompt : String, title_text : String, command : String, typing : Bool }
 
 
+type alias Link =
+    { name : String, url : String, icon : Icon Icon.WithoutId }
+
+
 type Msg
     = TypeCommand
     | StopTyping
     | DelayTypeCommand Int
 
 
+type alias StyledText =
+    { text : String, style : String }
+
+
+onnen_links : List Link
+onnen_links =
+    [ Link "GitHub" "https://github.com/onnenon" Icon.github
+    , Link "LinkedIn" "https://linkedin.com/in/sconnen" Icon.linkedin
+    , Link "Email" "mailto:stephen.onnen@gmail.com" Icon.envelope
+    ]
+
+
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model get_prompt "" "./onn.sh" True, Cmd.none )
-
-
-get_prompt : String
-get_prompt =
-    "λ"
+    ( Model "λ" "" "./onn.sh" True, Cmd.none )
 
 
 main : Program () Model Msg
 main =
     Browser.element { init = init, update = update, view = view, subscriptions = subscriptions }
-
-
-view : Model -> Html.Html msg
-view model =
-    div
-        [ class "flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2" ]
-        [ Icon.css
-        , lazy2 title model.prompt model.title_text
-        , link_icons onnen_links
-        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -62,6 +62,17 @@ update msg model =
 
         DelayTypeCommand delay ->
             ( model, Process.sleep (toFloat delay) |> Task.perform (always TypeCommand) )
+
+
+view : Model -> Html.Html msg
+view model =
+    div
+        [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2" ]
+        [ Icon.css
+        , prompt_top_row prompt_top_parts
+        , lazy2 title model.prompt model.title_text
+        , link_icons onnen_links
+        ]
 
 
 type_command : Model -> Model
@@ -88,21 +99,31 @@ subscriptions model =
 title : String -> String -> Html.Html msg
 title prompt title_text =
     div [ class "flex flex-row" ]
-        [ h1 [ class title_font_style, class "dark:text-prime-purple text-prime-purple-lt pr-6 font-bold" ] [ text prompt ]
-        , h1 [ class title_font_style, class "dark:text-prime-white text-prime-black-txt" ] [ text title_text ]
-        , h1 [ class title_font_style, class "text-prime-gray animate-blink" ] [ text "▊" ]
+        [ h1
+            [ class title_font_style, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
+            [ text prompt ]
+        , h1 [ class title_font_style, class "dark:text-prime-dark-white text-prime-light-black" ] [ text title_text ]
+        , h1 [ class title_font_style, class "text-prime-dark-gray animate-blink" ] [ text "▊" ]
         ]
 
 
-type alias Link =
-    { name : String, url : String, icon : Icon Icon.WithoutId }
+prompt_top_row : List StyledText -> Html.Html msg
+prompt_top_row parts =
+    parts
+        |> List.map (\part -> div [ class part.style ] [ text part.text ])
+        |> div
+            [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2" ]
 
 
-onnen_links : List Link
-onnen_links =
-    [ Link "GitHub" "https://github.com/onnenon" Icon.github
-    , Link "LinkedIn" "https://linkedin.com/in/sconnen" Icon.linkedin
-    , Link "Email" "mailto:stephen.onnen@gmail.com" Icon.envelope
+prompt_top_parts : List StyledText
+prompt_top_parts =
+    [ StyledText "11:39AM" "text-prime-dark-green pr-4"
+    , StyledText "-" "text-prime-dark-yellow pr-4"
+    , StyledText "sonnen" "text-prime-dark-purple"
+    , StyledText "@onnen.dev" "text-prime-dark-blue pr-4"
+    , StyledText "[" "text-prime-dark-blue"
+    , StyledText "~" "text-prime-dark-gray"
+    , StyledText "]" "text-prime-dark-blue"
     ]
 
 
@@ -116,7 +137,8 @@ link_icons links =
 link_icon : Link -> Html.Html msg
 link_icon link =
     a
-        [ class "flex-shrink text-prime-gray-lt dark:text-prime-gray hover:dark:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
+        [ class "flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
+        , class "text-prime-gray-lt dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black"
         , href link.url
         ]
         [ Icon.view link.icon ]

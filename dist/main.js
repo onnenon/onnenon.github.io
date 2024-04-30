@@ -5246,12 +5246,11 @@ var $author$project$Main$Model = F4(
 	function (prompt, title_text, command, typing) {
 		return {command: command, prompt: prompt, title_text: title_text, typing: typing};
 	});
-var $author$project$Main$get_prompt = 'λ';
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		A4($author$project$Main$Model, $author$project$Main$get_prompt, '', './onn.sh', true),
+		A4($author$project$Main$Model, 'λ', '', './onn.sh', true),
 		$elm$core$Platform$Cmd$none);
 };
 var $author$project$Main$TypeCommand = {$: 'TypeCommand'};
@@ -6275,7 +6274,8 @@ var $author$project$Main$link_icon = function (link) {
 		$elm$html$Html$a,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex-shrink text-prime-gray-lt dark:text-prime-gray hover:dark:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
+				$elm$html$Html$Attributes$class('flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
+				$elm$html$Html$Attributes$class('text-prime-gray-lt dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black'),
 				$elm$html$Html$Attributes$href(link.url)
 			]),
 		_List_fromArray(
@@ -6334,6 +6334,43 @@ var $author$project$Main$onnen_links = _List_fromArray(
 		A3($author$project$Main$Link, 'LinkedIn', 'https://linkedin.com/in/sconnen', $lattyware$elm_fontawesome$FontAwesome$Brands$linkedin),
 		A3($author$project$Main$Link, 'Email', 'mailto:stephen.onnen@gmail.com', $lattyware$elm_fontawesome$FontAwesome$Solid$envelope)
 	]);
+var $author$project$Main$StyledText = F2(
+	function (text, style) {
+		return {style: style, text: text};
+	});
+var $author$project$Main$prompt_top_parts = _List_fromArray(
+	[
+		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-dark-green pr-4'),
+		A2($author$project$Main$StyledText, '-', 'text-prime-dark-yellow pr-4'),
+		A2($author$project$Main$StyledText, 'sonnen', 'text-prime-dark-purple'),
+		A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-dark-blue pr-4'),
+		A2($author$project$Main$StyledText, '[', 'text-prime-dark-blue'),
+		A2($author$project$Main$StyledText, '~', 'text-prime-dark-gray'),
+		A2($author$project$Main$StyledText, ']', 'text-prime-dark-blue')
+	]);
+var $author$project$Main$prompt_top_row = function (parts) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('flex md:text-4xl text-[4.5vw] font-mono mb-2')
+			]),
+		A2(
+			$elm$core$List$map,
+			function (part) {
+				return A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class(part.style)
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(part.text)
+						]));
+			},
+			parts));
+};
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $author$project$Main$title_font_style = 'flex font-mono select-none md:text-8xl text-[14vw]';
 var $author$project$Main$title = F2(
@@ -6351,7 +6388,7 @@ var $author$project$Main$title = F2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-							$elm$html$Html$Attributes$class('dark:text-prime-purple text-prime-purple-lt pr-6 font-bold')
+							$elm$html$Html$Attributes$class('dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold')
 						]),
 					_List_fromArray(
 						[
@@ -6362,7 +6399,7 @@ var $author$project$Main$title = F2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-							$elm$html$Html$Attributes$class('dark:text-prime-white text-prime-black-txt')
+							$elm$html$Html$Attributes$class('dark:text-prime-dark-white text-prime-light-black')
 						]),
 					_List_fromArray(
 						[
@@ -6373,7 +6410,7 @@ var $author$project$Main$title = F2(
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-							$elm$html$Html$Attributes$class('text-prime-gray animate-blink')
+							$elm$html$Html$Attributes$class('text-prime-dark-gray animate-blink')
 						]),
 					_List_fromArray(
 						[
@@ -6386,11 +6423,12 @@ var $author$project$Main$view = function (model) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2')
+				$elm$html$Html$Attributes$class('flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2')
 			]),
 		_List_fromArray(
 			[
 				$lattyware$elm_fontawesome$FontAwesome$Styles$css,
+				$author$project$Main$prompt_top_row($author$project$Main$prompt_top_parts),
 				A3($elm$html$Html$Lazy$lazy2, $author$project$Main$title, model.prompt, model.title_text),
 				$author$project$Main$link_icons($author$project$Main$onnen_links)
 			]));
