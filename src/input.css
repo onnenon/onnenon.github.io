@@ -9,6 +9,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Mononoki";
+  src: url("fonts/mononoki-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mononoki";
+  src: url("fonts/mononoki-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
