@@ -9,10 +9,11 @@ module.exports = {
       mono: ["Ubuntu Mono", "monospace"],
     },
     colors: {
-      "prime-white": "c9d1d9",
-      "prime-bg": "0d1117",
-      "prime-purple": "8a63d2",
-      "cursor-gray": "8b949e",
+      "prime-white": "#f0f6fc",
+      "prime-white-bg": "#eaeef2",
+      "prime-black": "#0d1117",
+      "prime-purple": "#8957e5",
+      "prime-gray": "#b1bac4",
     },
     extend: {
       keyframes: {
@@ -27,4 +28,5 @@ module.exports = {
     },
   },
   plugins: [],
+  darkMode: "selector",
 };

@@ -12,7 +12,7 @@ import Html.Attributes exposing (..)
 main : Html.Html msg
 main =
     div
-        [ class "flex flex-col min-h-screen bg-prime-bg p-2" ]
+        [ class "flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2" ]
         [ Icon.css
         , title
         , link_icons onnen_links
@@ -23,8 +23,8 @@ title : Html.Html msg
 title =
     div [ class "flex flex-row" ]
         [ h1 [ class title_font_style, class "text-prime-purple" ] [ text "$" ]
-        , h1 [ class title_font_style, class "text-prime-white" ] [ text "./onn.sh" ]
-        , h1 [ class title_font_style, class "text-cursor-gray animate-blink" ] [ text "▊" ]
+        , h1 [ class title_font_style, class "dark:text-prime-white test-prime-black" ] [ text "./onn.sh" ]
+        , h1 [ class title_font_style, class "text-prime-gray animate-blink" ] [ text "▊" ]
         ]
 
 
@@ -50,7 +50,7 @@ link_icons links =
 link_icon : Link -> Html.Html msg
 link_icon link =
     a
-        [ class "flex-shrink text-cursor-gray hover:text-prime-white md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
+        [ class "flex-shrink dark:text-prime-gray dark:hover:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
         , href link.url
         ]
         [ Icon.view link.icon ]

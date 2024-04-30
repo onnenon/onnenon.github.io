@@ -4916,7 +4916,7 @@ var $author$project$Main$link_icon = function (link) {
 		$elm$html$Html$a,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex-shrink text-cursor-gray hover:text-prime-white md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
+				$elm$html$Html$Attributes$class('flex-shrink dark:text-prime-gray dark:hover:text-prime-white hover:text-prime-black md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
 				$elm$html$Html$Attributes$href(link.url)
 			]),
 		_List_fromArray(
@@ -5004,7 +5004,7 @@ var $author$project$Main$title = A2(
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-					$elm$html$Html$Attributes$class('text-prime-white')
+					$elm$html$Html$Attributes$class('dark:text-prime-white test-prime-black')
 				]),
 			_List_fromArray(
 				[
@@ -5015,7 +5015,7 @@ var $author$project$Main$title = A2(
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
-					$elm$html$Html$Attributes$class('text-cursor-gray animate-blink')
+					$elm$html$Html$Attributes$class('text-prime-gray animate-blink')
 				]),
 			_List_fromArray(
 				[
@@ -5026,7 +5026,7 @@ var $author$project$Main$main = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('flex flex-col min-h-screen bg-prime-bg p-2')
+			$elm$html$Html$Attributes$class('flex flex-col min-h-screen dark:bg-prime-black bg-prime-white-bg p-2')
 		]),
 	_List_fromArray(
 		[
