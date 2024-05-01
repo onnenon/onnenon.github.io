@@ -41,19 +41,6 @@ type alias StyledText =
     { text : String, style : String }
 
 
-getTime : Cmd Msg
-getTime =
-    Task.perform TimeUpdate Time.now
-
-
-onnen_links : List Link
-onnen_links =
-    [ Link "GitHub" "https://github.com/onnenon" Icon.github
-    , Link "LinkedIn" "https://linkedin.com/in/sconnen" Icon.linkedin
-    , Link "Email" "mailto:stephen.onnen@gmail.com" Icon.envelope
-    ]
-
-
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( Model (Time.millisToPosix 0) Time.utc "λ" "" "./onn.sh" True, getTime )
@@ -91,13 +78,16 @@ view model =
 
         minute =
             String.fromInt (Time.toMinute model.timeZone model.currentTime)
+
+        time =
+            hour ++ ":" ++ minute
     in
     div
         [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
         [ Icon.css
-        , prompt_top_row <| prompt_top_parts <| hour ++ ":" ++ minute
+        , prompt_top_row <| prompt_top_parts time
         , lazy title model
-        , link_icons onnen_links
+        , link_icons
         ]
 
 
@@ -156,8 +146,15 @@ prompt_top_parts time =
     ]
 
 
-link_icons : List Link -> Html.Html msg
-link_icons links =
+link_icons : Html.Html msg
+link_icons =
+    let
+        links =
+            [ Link "GitHub" "https://github.com/onnenon" Icon.github
+            , Link "LinkedIn" "https://linkedin.com/in/sconnen" Icon.linkedin
+            , Link "Email" "mailto:stephen.onnen@gmail.com" Icon.envelope
+            ]
+    in
     links
         |> List.map link_icon
         |> div [ class "flex flex-row justify-start" ]
@@ -176,3 +173,8 @@ link_icon link =
 title_font_style : String
 title_font_style =
     "flex font-mono select-none md:text-8xl text-[14vw]"
+
+
+getTime : Cmd Msg
+getTime =
+    Task.perform TimeUpdate Time.now
