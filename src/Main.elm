@@ -140,12 +140,12 @@ prompt_top_row parts =
     parts
         |> List.map (\part -> div [ class part.style ] [ text part.text ])
         |> div
-            [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold" ]
+            [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none" ]
 
 
 prompt_top_parts : String -> List StyledText
 prompt_top_parts time =
-    [ StyledText time "text-prime-light-red dark:text-prime-dark-red pr-4"
+    [ StyledText time "text-prime-light-green dark:text-prime-dark-red pr-4"
     , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
     , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
     , StyledText "@onnen.dev" "text-prime-light-blue dark:text-prime-dark-blue pr-4"

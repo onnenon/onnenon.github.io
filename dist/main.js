@@ -6379,7 +6379,7 @@ var $author$project$Main$StyledText = F2(
 var $author$project$Main$prompt_top_parts = function (time) {
 	return _List_fromArray(
 		[
-			A2($author$project$Main$StyledText, time, 'text-prime-light-red dark:text-prime-dark-red pr-4'),
+			A2($author$project$Main$StyledText, time, 'text-prime-light-green dark:text-prime-dark-red pr-4'),
 			A2($author$project$Main$StyledText, '-', 'text-prime-light-yellow dark:text-prime-dark-yellow pr-4'),
 			A2($author$project$Main$StyledText, 'sonnen', 'text-prime-light-purple dark:text-prime-dark-purple'),
 			A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-light-blue dark:text-prime-dark-blue pr-4'),
@@ -6393,7 +6393,7 @@ var $author$project$Main$prompt_top_row = function (parts) {
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold')
+				$elm$html$Html$Attributes$class('flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none')
 			]),
 		A2(
 			$elm$core$List$map,
