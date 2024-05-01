@@ -6369,6 +6369,9 @@ var $author$project$Main$link_icons = function () {
 			]),
 		A2($elm$core$List$map, $author$project$Main$link_icon, links));
 }();
+var $author$project$Main$padInt = function (num) {
+	return (num < 10) ? ('0' + $elm$core$String$fromInt(num)) : $elm$core$String$fromInt(num);
+};
 var $author$project$Main$StyledText = F2(
 	function (text, style) {
 		return {style: style, text: text};
@@ -6543,9 +6546,9 @@ var $elm$time$Time$toMinute = F2(
 			A2($elm$time$Time$toAdjustedMinutes, zone, time));
 	});
 var $author$project$Main$view = function (model) {
-	var minute = $elm$core$String$fromInt(
+	var minute = $author$project$Main$padInt(
 		A2($elm$time$Time$toMinute, model.timeZone, model.currentTime));
-	var hour = $elm$core$String$fromInt(
+	var hour = $author$project$Main$padInt(
 		A2($elm$time$Time$toHour, model.timeZone, model.currentTime));
 	var time = hour + (':' + minute);
 	return A2(

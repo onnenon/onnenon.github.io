@@ -70,14 +70,23 @@ update msg model =
             ( { model | timeZone = zone }, Cmd.none )
 
 
+padInt : Int -> String
+padInt num =
+    if num < 10 then
+        "0" ++ String.fromInt num
+
+    else
+        String.fromInt num
+
+
 view : Model -> Html.Html msg
 view model =
     let
         hour =
-            String.fromInt (Time.toHour model.timeZone model.currentTime)
+            padInt (Time.toHour model.timeZone model.currentTime)
 
         minute =
-            String.fromInt (Time.toMinute model.timeZone model.currentTime)
+            padInt (Time.toMinute model.timeZone model.currentTime)
 
         time =
             hour ++ ":" ++ minute
