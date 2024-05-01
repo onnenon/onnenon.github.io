@@ -5242,22 +5242,49 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Main$Model = F4(
-	function (prompt, title_text, command, typing) {
-		return {command: command, prompt: prompt, title_text: title_text, typing: typing};
+var $author$project$Main$Model = F6(
+	function (currentTime, timeZone, prompt, title_text, command, typing) {
+		return {command: command, currentTime: currentTime, prompt: prompt, timeZone: timeZone, title_text: title_text, typing: typing};
 	});
-var $elm$core$Platform$Cmd$batch = _Platform_batch;
-var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $author$project$Main$TimeUpdate = function (a) {
+	return {$: 'TimeUpdate', a: a};
+};
+var $elm$time$Time$Name = function (a) {
+	return {$: 'Name', a: a};
+};
+var $elm$time$Time$Offset = function (a) {
+	return {$: 'Offset', a: a};
+};
+var $elm$time$Time$Zone = F2(
+	function (a, b) {
+		return {$: 'Zone', a: a, b: b};
+	});
+var $elm$time$Time$customZone = $elm$time$Time$Zone;
+var $elm$time$Time$Posix = function (a) {
+	return {$: 'Posix', a: a};
+};
+var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
+var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
+var $author$project$Main$getTime = A2($elm$core$Task$perform, $author$project$Main$TimeUpdate, $elm$time$Time$now);
+var $elm$time$Time$utc = A2($elm$time$Time$Zone, 0, _List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		A4($author$project$Main$Model, 'λ', '', './onn.sh', true),
-		$elm$core$Platform$Cmd$none);
+		A6(
+			$author$project$Main$Model,
+			$elm$time$Time$millisToPosix(0),
+			$elm$time$Time$utc,
+			'λ',
+			'',
+			'./onn.sh',
+			true),
+		$author$project$Main$getTime);
 };
 var $author$project$Main$TypeCommand = {$: 'TypeCommand'};
 var $elm$core$Basics$always = F2(
 	function (a, _v0) {
 		return a;
 	});
+var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$time$Time$Every = F2(
 	function (a, b) {
 		return {$: 'Every', a: a, b: b};
@@ -5519,17 +5546,6 @@ var $elm$core$Dict$merge = F6(
 			leftovers);
 	});
 var $elm$core$Platform$sendToSelf = _Platform_sendToSelf;
-var $elm$time$Time$Name = function (a) {
-	return {$: 'Name', a: a};
-};
-var $elm$time$Time$Offset = function (a) {
-	return {$: 'Offset', a: a};
-};
-var $elm$time$Time$Zone = F2(
-	function (a, b) {
-		return {$: 'Zone', a: a, b: b};
-	});
-var $elm$time$Time$customZone = $elm$time$Time$Zone;
 var $elm$time$Time$setInterval = _Time_setInterval;
 var $elm$core$Process$spawn = _Scheduler_spawn;
 var $elm$time$Time$spawnHelp = F3(
@@ -5620,11 +5636,6 @@ var $elm$time$Time$onEffects = F3(
 				},
 				killTask));
 	});
-var $elm$time$Time$Posix = function (a) {
-	return {$: 'Posix', a: a};
-};
-var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
-var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
 var $elm$time$Time$onSelfMsg = F3(
 	function (router, interval, state) {
 		var _v0 = A2($elm$core$Dict$get, interval, state.taggers);
@@ -5673,13 +5684,20 @@ var $elm$time$Time$every = F2(
 		return $elm$time$Time$subscription(
 			A2($elm$time$Time$Every, interval, tagger));
 	});
-var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$Main$subscriptions = function (model) {
-	return model.typing ? A2(
-		$elm$time$Time$every,
-		500,
-		$elm$core$Basics$always($author$project$Main$TypeCommand)) : $elm$core$Platform$Sub$none;
+	return $elm$core$Platform$Sub$batch(
+		_List_fromArray(
+			[
+				model.typing ? A2(
+				$elm$time$Time$every,
+				500,
+				$elm$core$Basics$always($author$project$Main$TypeCommand)) : $elm$core$Platform$Sub$none,
+				A2($elm$time$Time$every, 1000, $author$project$Main$TimeUpdate)
+			]));
+};
+var $author$project$Main$AdjustTimeZone = function (a) {
+	return {$: 'AdjustTimeZone', a: a};
 };
 var $author$project$Main$DelayTypeCommand = function (a) {
 	return {$: 'DelayTypeCommand', a: a};
@@ -5775,6 +5793,7 @@ var $elm$random$Random$generate = F2(
 			$elm$random$Random$Generate(
 				A2($elm$random$Random$map, tagger, generator)));
 	});
+var $elm$time$Time$here = _Time_here(_Utils_Tuple0);
 var $elm$core$Bitwise$and = _Bitwise_and;
 var $elm$core$Basics$negate = function (n) {
 	return -n;
@@ -5817,6 +5836,8 @@ var $elm$random$Random$int = F2(
 				}
 			});
 	});
+var $elm$core$Platform$Cmd$batch = _Platform_batch;
+var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Process$sleep = _Process_sleep;
 var $author$project$Main$type_command = function (model) {
 	return $elm$core$String$isEmpty(model.command) ? _Utils_update(
@@ -5846,7 +5867,7 @@ var $author$project$Main$update = F2(
 						model,
 						{typing: false}),
 					$elm$core$Platform$Cmd$none);
-			default:
+			case 'DelayTypeCommand':
 				var delay = msg.a;
 				return _Utils_Tuple2(
 					model,
@@ -5854,6 +5875,20 @@ var $author$project$Main$update = F2(
 						$elm$core$Task$perform,
 						$elm$core$Basics$always($author$project$Main$TypeCommand),
 						$elm$core$Process$sleep(delay)));
+			case 'TimeUpdate':
+				var time = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{currentTime: time}),
+					A2($elm$core$Task$perform, $author$project$Main$AdjustTimeZone, $elm$time$Time$here));
+			default:
+				var zone = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{timeZone: zone}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -6338,16 +6373,18 @@ var $author$project$Main$StyledText = F2(
 	function (text, style) {
 		return {style: style, text: text};
 	});
-var $author$project$Main$prompt_top_parts = _List_fromArray(
-	[
-		A2($author$project$Main$StyledText, '11:39AM', 'text-prime-light-red dark:text-prime-dark-red pr-4'),
-		A2($author$project$Main$StyledText, '-', 'text-prime-light-yellow dark:text-prime-dark-yellow pr-4'),
-		A2($author$project$Main$StyledText, 'sonnen', 'text-prime-light-purple dark:text-prime-dark-purple'),
-		A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-light-blue dark:text-prime-dark-blue pr-4'),
-		A2($author$project$Main$StyledText, '[', 'text-prime-light-blue dark:text-prime-dark-blue'),
-		A2($author$project$Main$StyledText, '~', 'text-prime-light-gray dark:text-prime-dark-gray'),
-		A2($author$project$Main$StyledText, ']', 'text-prime-light-blue dark:text-prime-dark-blue')
-	]);
+var $author$project$Main$prompt_top_parts = function (time) {
+	return _List_fromArray(
+		[
+			A2($author$project$Main$StyledText, time, 'text-prime-light-red dark:text-prime-dark-red pr-4'),
+			A2($author$project$Main$StyledText, '-', 'text-prime-light-yellow dark:text-prime-dark-yellow pr-4'),
+			A2($author$project$Main$StyledText, 'sonnen', 'text-prime-light-purple dark:text-prime-dark-purple'),
+			A2($author$project$Main$StyledText, '@onnen.dev', 'text-prime-light-blue dark:text-prime-dark-blue pr-4'),
+			A2($author$project$Main$StyledText, '[', 'text-prime-light-blue dark:text-prime-dark-blue'),
+			A2($author$project$Main$StyledText, '~', 'text-prime-light-gray dark:text-prime-dark-gray'),
+			A2($author$project$Main$StyledText, ']', 'text-prime-light-blue dark:text-prime-dark-blue')
+		]);
+};
 var $author$project$Main$prompt_top_row = function (parts) {
 	return A2(
 		$elm$html$Html$div,
@@ -6371,10 +6408,34 @@ var $author$project$Main$prompt_top_row = function (parts) {
 			},
 			parts));
 };
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $elm$html$Html$Attributes$classList = function (classes) {
+	return $elm$html$Html$Attributes$class(
+		A2(
+			$elm$core$String$join,
+			' ',
+			A2(
+				$elm$core$List$map,
+				$elm$core$Tuple$first,
+				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
+};
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $author$project$Main$title_font_style = 'flex font-mono select-none md:text-8xl text-[14vw]';
 var $author$project$Main$title = function (model) {
-	var blink_class = model.typing ? '' : 'animate-blink';
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -6411,7 +6472,11 @@ var $author$project$Main$title = function (model) {
 					[
 						$elm$html$Html$Attributes$class($author$project$Main$title_font_style),
 						$elm$html$Html$Attributes$class('text-prime-dark-gray flex'),
-						$elm$html$Html$Attributes$class(blink_class)
+						$elm$html$Html$Attributes$classList(
+						_List_fromArray(
+							[
+								_Utils_Tuple2('animate-blink', !model.typing)
+							]))
 					]),
 				_List_fromArray(
 					[
@@ -6419,7 +6484,69 @@ var $author$project$Main$title = function (model) {
 					]))
 			]));
 };
+var $elm$time$Time$flooredDiv = F2(
+	function (numerator, denominator) {
+		return $elm$core$Basics$floor(numerator / denominator);
+	});
+var $elm$core$Basics$modBy = _Basics_modBy;
+var $elm$time$Time$toAdjustedMinutesHelp = F3(
+	function (defaultOffset, posixMinutes, eras) {
+		toAdjustedMinutesHelp:
+		while (true) {
+			if (!eras.b) {
+				return posixMinutes + defaultOffset;
+			} else {
+				var era = eras.a;
+				var olderEras = eras.b;
+				if (_Utils_cmp(era.start, posixMinutes) < 0) {
+					return posixMinutes + era.offset;
+				} else {
+					var $temp$defaultOffset = defaultOffset,
+						$temp$posixMinutes = posixMinutes,
+						$temp$eras = olderEras;
+					defaultOffset = $temp$defaultOffset;
+					posixMinutes = $temp$posixMinutes;
+					eras = $temp$eras;
+					continue toAdjustedMinutesHelp;
+				}
+			}
+		}
+	});
+var $elm$time$Time$toAdjustedMinutes = F2(
+	function (_v0, time) {
+		var defaultOffset = _v0.a;
+		var eras = _v0.b;
+		return A3(
+			$elm$time$Time$toAdjustedMinutesHelp,
+			defaultOffset,
+			A2(
+				$elm$time$Time$flooredDiv,
+				$elm$time$Time$posixToMillis(time),
+				60000),
+			eras);
+	});
+var $elm$time$Time$toHour = F2(
+	function (zone, time) {
+		return A2(
+			$elm$core$Basics$modBy,
+			24,
+			A2(
+				$elm$time$Time$flooredDiv,
+				A2($elm$time$Time$toAdjustedMinutes, zone, time),
+				60));
+	});
+var $elm$time$Time$toMinute = F2(
+	function (zone, time) {
+		return A2(
+			$elm$core$Basics$modBy,
+			60,
+			A2($elm$time$Time$toAdjustedMinutes, zone, time));
+	});
 var $author$project$Main$view = function (model) {
+	var minute = $elm$core$String$fromInt(
+		A2($elm$time$Time$toMinute, model.timeZone, model.currentTime));
+	var hour = $elm$core$String$fromInt(
+		A2($elm$time$Time$toHour, model.timeZone, model.currentTime));
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -6429,7 +6556,8 @@ var $author$project$Main$view = function (model) {
 		_List_fromArray(
 			[
 				$lattyware$elm_fontawesome$FontAwesome$Styles$css,
-				$author$project$Main$prompt_top_row($author$project$Main$prompt_top_parts),
+				$author$project$Main$prompt_top_row(
+				$author$project$Main$prompt_top_parts(hour + (':' + minute))),
 				A2($elm$html$Html$Lazy$lazy, $author$project$Main$title, model),
 				$author$project$Main$link_icons($author$project$Main$onnen_links)
 			]));

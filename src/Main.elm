@@ -16,7 +16,13 @@ import Time
 
 
 type alias Model =
-    { prompt : String, title_text : String, command : String, typing : Bool }
+    { currentTime : Time.Posix
+    , timeZone : Time.Zone
+    , prompt : String
+    , title_text : String
+    , command : String
+    , typing : Bool
+    }
 
 
 type alias Link =
@@ -27,10 +33,17 @@ type Msg
     = TypeCommand
     | StopTyping
     | DelayTypeCommand Int
+    | TimeUpdate Time.Posix
+    | AdjustTimeZone Time.Zone
 
 
 type alias StyledText =
     { text : String, style : String }
+
+
+getTime : Cmd Msg
+getTime =
+    Task.perform TimeUpdate Time.now
 
 
 onnen_links : List Link
@@ -43,7 +56,7 @@ onnen_links =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model "λ" "" "./onn.sh" True, Cmd.none )
+    ( Model (Time.millisToPosix 0) Time.utc "λ" "" "./onn.sh" True, getTime )
 
 
 main : Program () Model Msg
@@ -63,13 +76,26 @@ update msg model =
         DelayTypeCommand delay ->
             ( model, Process.sleep (toFloat delay) |> Task.perform (always TypeCommand) )
 
+        TimeUpdate time ->
+            ( { model | currentTime = time }, Task.perform AdjustTimeZone Time.here )
+
+        AdjustTimeZone zone ->
+            ( { model | timeZone = zone }, Cmd.none )
+
 
 view : Model -> Html.Html msg
 view model =
+    let
+        hour =
+            String.fromInt (Time.toHour model.timeZone model.currentTime)
+
+        minute =
+            String.fromInt (Time.toMinute model.timeZone model.currentTime)
+    in
     div
         [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
         [ Icon.css
-        , prompt_top_row prompt_top_parts
+        , prompt_top_row <| prompt_top_parts <| hour ++ ":" ++ minute
         , lazy title model
         , link_icons onnen_links
         ]
@@ -89,29 +115,24 @@ type_command model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    if model.typing then
-        Time.every 500 (always TypeCommand)
+    Sub.batch
+        [ if model.typing then
+            Time.every 500 (always TypeCommand)
 
-    else
-        Sub.none
+          else
+            Sub.none
+        , Time.every 1000 TimeUpdate
+        ]
 
 
 title : Model -> Html.Html msg
 title model =
-    let
-        blink_class =
-            if model.typing then
-                ""
-
-            else
-                "animate-blink"
-    in
     div [ class "flex flex-row" ]
         [ h1
             [ class title_font_style, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
             [ text model.prompt ]
         , h1 [ class title_font_style, class "dark:text-prime-dark-white text-prime-light-black" ] [ text model.title_text ]
-        , h1 [ class title_font_style, class "text-prime-dark-gray flex", class blink_class ] [ text "▇" ]
+        , h1 [ class title_font_style, class "text-prime-dark-gray flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
         ]
 
 
@@ -123,9 +144,9 @@ prompt_top_row parts =
             [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold" ]
 
 
-prompt_top_parts : List StyledText
-prompt_top_parts =
-    [ StyledText "11:39AM" "text-prime-light-red dark:text-prime-dark-red pr-4"
+prompt_top_parts : String -> List StyledText
+prompt_top_parts time =
+    [ StyledText time "text-prime-light-red dark:text-prime-dark-red pr-4"
     , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
     , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
     , StyledText "@onnen.dev" "text-prime-light-blue dark:text-prime-dark-blue pr-4"
