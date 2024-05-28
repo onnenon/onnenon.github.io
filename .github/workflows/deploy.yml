@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: jorelali/setup-elm@v5
+      - uses: jorelali/setup-elm@v6
         with:
           elm-version: 0.19.1
       - run: npm install -D tailwindcss
