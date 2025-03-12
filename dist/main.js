@@ -77,7 +77,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
+
 
 
 // EQUALITY
@@ -113,7 +113,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -126,7 +126,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -161,7 +161,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -170,10 +170,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -203,17 +203,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -264,11 +264,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -499,12 +499,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -530,12 +530,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -720,13 +720,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -784,11 +784,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.S.A === region.X.A)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.S.A;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.S.A + ' through ' + region.X.A;
 }
 
 
@@ -1212,7 +1212,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1616,11 +1616,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aK,
+		impl.aX,
+		impl.aV,
 		function() { return function() {} }
 	);
 });
@@ -1872,7 +1872,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2316,7 +2316,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2337,7 +2337,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2377,10 +2377,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**_UNUSED/
+	/**/
 	var node = args['node'];
 	//*/
-	/**/
+	/**_UNUSED/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2655,14 +2655,14 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 function _VirtualDom_noJavaScriptUri(value)
 {
 	return _VirtualDom_RE_js.test(value)
-		? /**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+		? /**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		: value;
 }
 
 function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return _VirtualDom_RE_js_html.test(value)
-		? /**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+		? /**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		: value;
 }
 
@@ -2670,7 +2670,7 @@ function _VirtualDom_noJavaScriptOrHtmlJson(value)
 {
 	return (typeof _Json_unwrap(value) === 'string' && _VirtualDom_RE_js_html.test(_Json_unwrap(value)))
 		? _Json_wrap(
-			/**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+			/**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		) : value;
 }
 
@@ -2719,9 +2719,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		message: func(record.message),
-		stopPropagation: record.stopPropagation,
-		preventDefault: record.preventDefault
+		o: func(record.o),
+		T: record.T,
+		P: record.P
 	}
 });
 
@@ -2989,11 +2989,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.message;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
+		var message = !tag ? value : tag < 3 ? value.a : value.o;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.T;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.P) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,15 +3943,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aK,
+		impl.aX,
+		impl.aV,
 		function(sendToApp, initialModel) {
-			var view = impl.view;
-			/**_UNUSED/
+			var view = impl.aY;
+			/**/
 			var domNode = args['node'];
 			//*/
-			/**/
+			/**_UNUSED/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aK,
+		impl.aX,
+		impl.aV,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
-			var view = impl.view;
+			var divertHrefToApp = impl.R && impl.R(sendToApp)
+			var view = impl.aY;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aB);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
+				(title !== doc.aW) && (_VirtualDom_doc.title = title = doc.aW);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.onUrlChange;
-	var onUrlRequest = impl.onUrlRequest;
+	var onUrlChange = impl.aN;
+	var onUrlRequest = impl.aO;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		setup: function(sendToApp)
+		R: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.protocol === next.protocol
-							&& curr.host === next.host
-							&& curr.port_.a === next.port_.a
+							&& curr.al === next.al
+							&& curr.aa === next.aa
+							&& curr.ah.a === next.ah.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		init: function(flags)
+		aK: function(flags)
 		{
-			return A3(impl.init, flags, _Browser_getUrl(), key);
+			return A3(impl.aK, flags, _Browser_getUrl(), key);
 		},
-		view: impl.view,
-		update: impl.update,
-		subscriptions: impl.subscriptions
+		aY: impl.aY,
+		aX: impl.aX,
+		aV: impl.aV
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { hidden: 'hidden', change: 'visibilitychange' }
+		? { aI: 'hidden', aC: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
+		? { aI: 'mozHidden', aC: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { hidden: 'msHidden', change: 'msvisibilitychange' }
+		? { aI: 'msHidden', aC: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
-		: { hidden: 'hidden', change: 'visibilitychange' };
+		? { aI: 'webkitHidden', aC: 'webkitvisibilitychange' }
+		: { aI: 'hidden', aC: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		scene: _Browser_getScene(),
-		viewport: {
-			x: _Browser_window.pageXOffset,
-			y: _Browser_window.pageYOffset,
-			width: _Browser_doc.documentElement.clientWidth,
-			height: _Browser_doc.documentElement.clientHeight
+		ap: _Browser_getScene(),
+		av: {
+			ax: _Browser_window.pageXOffset,
+			ay: _Browser_window.pageYOffset,
+			aw: _Browser_doc.documentElement.clientWidth,
+			_: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		aw: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		_: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			scene: {
-				width: node.scrollWidth,
-				height: node.scrollHeight
+			ap: {
+				aw: node.scrollWidth,
+				_: node.scrollHeight
 			},
-			viewport: {
-				x: node.scrollLeft,
-				y: node.scrollTop,
-				width: node.clientWidth,
-				height: node.clientHeight
+			av: {
+				ax: node.scrollLeft,
+				ay: node.scrollTop,
+				aw: node.clientWidth,
+				_: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			scene: _Browser_getScene(),
-			viewport: {
-				x: x,
-				y: y,
-				width: _Browser_doc.documentElement.clientWidth,
-				height: _Browser_doc.documentElement.clientHeight
+			ap: _Browser_getScene(),
+			av: {
+				ax: x,
+				ay: y,
+				aw: _Browser_doc.documentElement.clientWidth,
+				_: _Browser_doc.documentElement.clientHeight
 			},
-			element: {
-				x: x + rect.left,
-				y: y + rect.top,
-				width: rect.width,
-				height: rect.height
+			aE: {
+				ax: x + rect.left,
+				ay: y + rect.top,
+				aw: rect.width,
+				_: rect.height
 			}
 		};
 	});
@@ -4453,15 +4453,15 @@ var _Bitwise_shiftRightZfBy = F2(function(offset, a)
 {
 	return a >>> offset;
 });
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4506,7 +4506,7 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4516,7 +4516,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4534,32 +4534,32 @@ var $elm$core$Array$toList = function (array) {
 	return A3($elm$core$Array$foldr, $elm$core$List$cons, _List_Nil, array);
 };
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
+var $elm$core$Basics$False = 1;
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -4684,12 +4684,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -4704,7 +4704,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -4713,7 +4713,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -4777,7 +4777,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -4792,7 +4792,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -4812,7 +4812,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -4859,25 +4859,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.a) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.c),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.c);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.a * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.d) : builder.d;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.a);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.c) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.c);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4890,7 +4890,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{d: nodeList, a: (len / $elm$core$Array$branchFactor) | 0, c: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4920,9 +4920,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
@@ -4933,33 +4933,31 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 'Normal':
+		case 0:
 			return 0;
-		case 'MayStopPropagation':
+		case 1:
 			return 1;
-		case 'MayPreventDefault':
+		case 2:
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
+	return {$: 1, a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var $elm$url$Url$Http = {$: 'Http'};
-var $elm$url$Url$Https = {$: 'Https'};
+var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
+var $elm$url$Url$Http = 0;
+var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
+		return {Z: fragment, aa: host, af: path, ah: port_, al: protocol, am: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -4995,7 +4993,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -5078,26 +5076,24 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Http,
+		0,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Https,
+		1,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0.a;
+		var nvr = _v0;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
+var $elm$core$Task$Perform = $elm$core$Basics$identity;
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
+var $elm$core$Task$init = $elm$core$Task$succeed(0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5203,7 +5199,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0.a;
+		var task = _v0;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5215,7 +5211,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return _Utils_Tuple0;
+				return 0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5225,45 +5221,41 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(_Utils_Tuple0);
+		return $elm$core$Task$succeed(0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0.a;
-		return $elm$core$Task$Perform(
-			A2($elm$core$Task$map, tagger, task));
+		var task = _v0;
+		return A2($elm$core$Task$map, tagger, task);
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
-				A2($elm$core$Task$map, toMessage, task)));
+			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
 var $author$project$Main$Model = F6(
 	function (currentTime, timeZone, prompt, title_text, command, typing) {
-		return {command: command, currentTime: currentTime, prompt: prompt, timeZone: timeZone, title_text: title_text, typing: typing};
+		return {z: command, H: currentTime, ak: prompt, I: timeZone, J: title_text, E: typing};
 	});
 var $author$project$Main$TimeUpdate = function (a) {
-	return {$: 'TimeUpdate', a: a};
+	return {$: 3, a: a};
 };
 var $elm$time$Time$Name = function (a) {
-	return {$: 'Name', a: a};
+	return {$: 0, a: a};
 };
 var $elm$time$Time$Offset = function (a) {
-	return {$: 'Offset', a: a};
+	return {$: 1, a: a};
 };
 var $elm$time$Time$Zone = F2(
 	function (a, b) {
-		return {$: 'Zone', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$time$Time$customZone = $elm$time$Time$Zone;
-var $elm$time$Time$Posix = function (a) {
-	return {$: 'Posix', a: a};
-};
-var $elm$time$Time$millisToPosix = $elm$time$Time$Posix;
+var $elm$time$Time$Posix = $elm$core$Basics$identity;
+var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
 var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
 var $author$project$Main$getTime = A2($elm$core$Task$perform, $author$project$Main$TimeUpdate, $elm$time$Time$now);
 var $elm$time$Time$utc = A2($elm$time$Time$Zone, 0, _List_Nil);
@@ -5279,7 +5271,7 @@ var $author$project$Main$init = function (_v0) {
 			true),
 		$author$project$Main$getTime);
 };
-var $author$project$Main$TypeCommand = {$: 'TypeCommand'};
+var $author$project$Main$TypeCommand = {$: 0};
 var $elm$core$Basics$always = F2(
 	function (a, _v0) {
 		return a;
@@ -5287,13 +5279,13 @@ var $elm$core$Basics$always = F2(
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$time$Time$Every = F2(
 	function (a, b) {
-		return {$: 'Every', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$time$Time$State = F2(
 	function (taggers, processes) {
-		return {processes: processes, taggers: taggers};
+		return {aj: processes, as: taggers};
 	});
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$time$Time$init = $elm$core$Task$succeed(
 	A2($elm$time$Time$State, $elm$core$Dict$empty, $elm$core$Dict$empty));
@@ -5302,7 +5294,7 @@ var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -5310,14 +5302,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
+				switch (_v1) {
+					case 0:
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 'EQ':
+					case 1:
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -5329,21 +5321,21 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
-var $elm$core$Dict$Black = {$: 'Black'};
+var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = {$: 'Red'};
+var $elm$core$Dict$Red = 0;
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
+		if ((right.$ === -1) && (!right.a)) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+			if ((left.$ === -1) && (!left.a)) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -5351,22 +5343,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -5379,11 +5371,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -5391,8 +5383,8 @@ var $elm$core$Dict$balance = F5(
 	});
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -5400,8 +5392,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
+			switch (_v1) {
+				case 0:
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -5409,7 +5401,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 'EQ':
+				case 1:
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -5425,13 +5417,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -5442,7 +5434,7 @@ var $elm$time$Time$addMySub = F2(
 		var interval = _v0.a;
 		var tagger = _v0.b;
 		var _v1 = A2($elm$core$Dict$get, interval, state);
-		if (_v1.$ === 'Nothing') {
+		if (_v1.$ === 1) {
 			return A3(
 				$elm$core$Dict$insert,
 				interval,
@@ -5463,7 +5455,7 @@ var $elm$core$Dict$foldl = F3(
 	function (func, acc, dict) {
 		foldl:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return acc;
 			} else {
 				var key = dict.b;
@@ -5572,7 +5564,7 @@ var $elm$time$Time$spawnHelp = F3(
 	});
 var $elm$time$Time$onEffects = F3(
 	function (router, subs, _v0) {
-		var processes = _v0.processes;
+		var processes = _v0.aj;
 		var rightStep = F3(
 			function (_v6, id, _v7) {
 				var spawns = _v7.a;
@@ -5619,7 +5611,7 @@ var $elm$time$Time$onEffects = F3(
 			_Utils_Tuple3(
 				_List_Nil,
 				$elm$core$Dict$empty,
-				$elm$core$Task$succeed(_Utils_Tuple0)));
+				$elm$core$Task$succeed(0)));
 		var spawnList = _v1.a;
 		var existingDict = _v1.b;
 		var killTask = _v1.c;
@@ -5638,8 +5630,8 @@ var $elm$time$Time$onEffects = F3(
 	});
 var $elm$time$Time$onSelfMsg = F3(
 	function (router, interval, state) {
-		var _v0 = A2($elm$core$Dict$get, interval, state.taggers);
-		if (_v0.$ === 'Nothing') {
+		var _v0 = A2($elm$core$Dict$get, interval, state.as);
+		if (_v0.$ === 1) {
 			return $elm$core$Task$succeed(state);
 		} else {
 			var taggers = _v0.a;
@@ -5689,7 +5681,7 @@ var $author$project$Main$subscriptions = function (model) {
 	return $elm$core$Platform$Sub$batch(
 		_List_fromArray(
 			[
-				model.typing ? A2(
+				model.E ? A2(
 				$elm$time$Time$every,
 				500,
 				$elm$core$Basics$always($author$project$Main$TypeCommand)) : $elm$core$Platform$Sub$none,
@@ -5697,17 +5689,15 @@ var $author$project$Main$subscriptions = function (model) {
 			]));
 };
 var $author$project$Main$AdjustTimeZone = function (a) {
-	return {$: 'AdjustTimeZone', a: a};
+	return {$: 4, a: a};
 };
 var $author$project$Main$DelayTypeCommand = function (a) {
-	return {$: 'DelayTypeCommand', a: a};
+	return {$: 2, a: a};
 };
-var $elm$random$Random$Generate = function (a) {
-	return {$: 'Generate', a: a};
-};
+var $elm$random$Random$Generate = $elm$core$Basics$identity;
 var $elm$random$Random$Seed = F2(
 	function (a, b) {
-		return {$: 'Seed', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$core$Bitwise$shiftRightZfBy = _Bitwise_shiftRightZfBy;
 var $elm$random$Random$next = function (_v0) {
@@ -5725,7 +5715,7 @@ var $elm$random$Random$initialSeed = function (x) {
 		A2($elm$random$Random$Seed, state2, incr));
 };
 var $elm$time$Time$posixToMillis = function (_v0) {
-	var millis = _v0.a;
+	var millis = _v0;
 	return millis;
 };
 var $elm$random$Random$init = A2(
@@ -5738,7 +5728,7 @@ var $elm$random$Random$init = A2(
 	$elm$time$Time$now);
 var $elm$random$Random$step = F2(
 	function (_v0, seed) {
-		var generator = _v0.a;
+		var generator = _v0;
 		return generator(seed);
 	});
 var $elm$random$Random$onEffects = F3(
@@ -5746,7 +5736,7 @@ var $elm$random$Random$onEffects = F3(
 		if (!commands.b) {
 			return $elm$core$Task$succeed(seed);
 		} else {
-			var generator = commands.a.a;
+			var generator = commands.a;
 			var rest = commands.b;
 			var _v1 = A2($elm$random$Random$step, generator, seed);
 			var value = _v1.a;
@@ -5763,37 +5753,32 @@ var $elm$random$Random$onSelfMsg = F3(
 	function (_v0, _v1, seed) {
 		return $elm$core$Task$succeed(seed);
 	});
-var $elm$random$Random$Generator = function (a) {
-	return {$: 'Generator', a: a};
-};
+var $elm$random$Random$Generator = $elm$core$Basics$identity;
 var $elm$random$Random$map = F2(
 	function (func, _v0) {
-		var genA = _v0.a;
-		return $elm$random$Random$Generator(
-			function (seed0) {
-				var _v1 = genA(seed0);
-				var a = _v1.a;
-				var seed1 = _v1.b;
-				return _Utils_Tuple2(
-					func(a),
-					seed1);
-			});
+		var genA = _v0;
+		return function (seed0) {
+			var _v1 = genA(seed0);
+			var a = _v1.a;
+			var seed1 = _v1.b;
+			return _Utils_Tuple2(
+				func(a),
+				seed1);
+		};
 	});
 var $elm$random$Random$cmdMap = F2(
 	function (func, _v0) {
-		var generator = _v0.a;
-		return $elm$random$Random$Generate(
-			A2($elm$random$Random$map, func, generator));
+		var generator = _v0;
+		return A2($elm$random$Random$map, func, generator);
 	});
 _Platform_effectManagers['Random'] = _Platform_createManager($elm$random$Random$init, $elm$random$Random$onEffects, $elm$random$Random$onSelfMsg, $elm$random$Random$cmdMap);
 var $elm$random$Random$command = _Platform_leaf('Random');
 var $elm$random$Random$generate = F2(
 	function (tagger, generator) {
 		return $elm$random$Random$command(
-			$elm$random$Random$Generate(
-				A2($elm$random$Random$map, tagger, generator)));
+			A2($elm$random$Random$map, tagger, generator));
 	});
-var $elm$time$Time$here = _Time_here(_Utils_Tuple0);
+var $elm$time$Time$here = _Time_here(0);
 var $elm$core$Bitwise$and = _Bitwise_and;
 var $elm$core$Basics$negate = function (n) {
 	return -n;
@@ -5806,68 +5791,67 @@ var $elm$random$Random$peel = function (_v0) {
 };
 var $elm$random$Random$int = F2(
 	function (a, b) {
-		return $elm$random$Random$Generator(
-			function (seed0) {
-				var _v0 = (_Utils_cmp(a, b) < 0) ? _Utils_Tuple2(a, b) : _Utils_Tuple2(b, a);
-				var lo = _v0.a;
-				var hi = _v0.b;
-				var range = (hi - lo) + 1;
-				if (!((range - 1) & range)) {
-					return _Utils_Tuple2(
-						(((range - 1) & $elm$random$Random$peel(seed0)) >>> 0) + lo,
-						$elm$random$Random$next(seed0));
-				} else {
-					var threshhold = (((-range) >>> 0) % range) >>> 0;
-					var accountForBias = function (seed) {
-						accountForBias:
-						while (true) {
-							var x = $elm$random$Random$peel(seed);
-							var seedN = $elm$random$Random$next(seed);
-							if (_Utils_cmp(x, threshhold) < 0) {
-								var $temp$seed = seedN;
-								seed = $temp$seed;
-								continue accountForBias;
-							} else {
-								return _Utils_Tuple2((x % range) + lo, seedN);
-							}
+		return function (seed0) {
+			var _v0 = (_Utils_cmp(a, b) < 0) ? _Utils_Tuple2(a, b) : _Utils_Tuple2(b, a);
+			var lo = _v0.a;
+			var hi = _v0.b;
+			var range = (hi - lo) + 1;
+			if (!((range - 1) & range)) {
+				return _Utils_Tuple2(
+					(((range - 1) & $elm$random$Random$peel(seed0)) >>> 0) + lo,
+					$elm$random$Random$next(seed0));
+			} else {
+				var threshhold = (((-range) >>> 0) % range) >>> 0;
+				var accountForBias = function (seed) {
+					accountForBias:
+					while (true) {
+						var x = $elm$random$Random$peel(seed);
+						var seedN = $elm$random$Random$next(seed);
+						if (_Utils_cmp(x, threshhold) < 0) {
+							var $temp$seed = seedN;
+							seed = $temp$seed;
+							continue accountForBias;
+						} else {
+							return _Utils_Tuple2((x % range) + lo, seedN);
 						}
-					};
-					return accountForBias(seed0);
-				}
-			});
+					}
+				};
+				return accountForBias(seed0);
+			}
+		};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Process$sleep = _Process_sleep;
 var $author$project$Main$type_command = function (model) {
-	return $elm$core$String$isEmpty(model.command) ? _Utils_update(
+	return $elm$core$String$isEmpty(model.z) ? _Utils_update(
 		model,
-		{typing: false}) : _Utils_update(
+		{E: false}) : _Utils_update(
 		model,
 		{
-			command: A2($elm$core$String$dropLeft, 1, model.command),
-			title_text: _Utils_ap(
-				model.title_text,
-				A2($elm$core$String$left, 1, model.command))
+			z: A2($elm$core$String$dropLeft, 1, model.z),
+			J: _Utils_ap(
+				model.J,
+				A2($elm$core$String$left, 1, model.z))
 		});
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 'TypeCommand':
+			case 0:
 				return _Utils_Tuple2(
 					$author$project$Main$type_command(model),
 					A2(
 						$elm$random$Random$generate,
 						$author$project$Main$DelayTypeCommand,
 						A2($elm$random$Random$int, 100, 1000)));
-			case 'StopTyping':
+			case 1:
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{typing: false}),
+						{E: false}),
 					$elm$core$Platform$Cmd$none);
-			case 'DelayTypeCommand':
+			case 2:
 				var delay = msg.a;
 				return _Utils_Tuple2(
 					model,
@@ -5875,19 +5859,19 @@ var $author$project$Main$update = F2(
 						$elm$core$Task$perform,
 						$elm$core$Basics$always($author$project$Main$TypeCommand),
 						$elm$core$Process$sleep(delay)));
-			case 'TimeUpdate':
+			case 3:
 				var time = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{currentTime: time}),
+						{H: time}),
 					A2($elm$core$Task$perform, $author$project$Main$AdjustTimeZone, $elm$time$Time$here));
 			default:
 				var zone = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{timeZone: zone}),
+						{I: zone}),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5913,31 +5897,28 @@ var $lattyware$elm_fontawesome$FontAwesome$Styles$css = A3(
 	_List_Nil,
 	_List_fromArray(
 		[
-			$elm$html$Html$text(':root, :host {  --fa-font-solid: normal 900 1em/1 \"Font Awesome 6 Solid\";  --fa-font-regular: normal 400 1em/1 \"Font Awesome 6 Regular\";  --fa-font-light: normal 300 1em/1 \"Font Awesome 6 Light\";  --fa-font-thin: normal 100 1em/1 \"Font Awesome 6 Thin\";  --fa-font-duotone: normal 900 1em/1 \"Font Awesome 6 Duotone\";  --fa-font-sharp-solid: normal 900 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-regular: normal 400 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-light: normal 300 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-thin: normal 100 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-brands: normal 400 1em/1 \"Font Awesome 6 Brands\";}svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {  overflow: visible;  box-sizing: content-box;}.svg-inline--fa {  display: var(--fa-display, inline-block);  height: 1em;  overflow: visible;  vertical-align: -0.125em;}.svg-inline--fa.fa-2xs {  vertical-align: 0.1em;}.svg-inline--fa.fa-xs {  vertical-align: 0em;}.svg-inline--fa.fa-sm {  vertical-align: -0.0714285705em;}.svg-inline--fa.fa-lg {  vertical-align: -0.2em;}.svg-inline--fa.fa-xl {  vertical-align: -0.25em;}.svg-inline--fa.fa-2xl {  vertical-align: -0.3125em;}.svg-inline--fa.fa-pull-left {  margin-right: var(--fa-pull-margin, 0.3em);  width: auto;}.svg-inline--fa.fa-pull-right {  margin-left: var(--fa-pull-margin, 0.3em);  width: auto;}.svg-inline--fa.fa-li {  width: var(--fa-li-width, 2em);  top: 0.25em;}.svg-inline--fa.fa-fw {  width: var(--fa-fw-width, 1.25em);}.fa-layers svg.svg-inline--fa {  bottom: 0;  left: 0;  margin: auto;  position: absolute;  right: 0;  top: 0;}.fa-layers-counter, .fa-layers-text {  display: inline-block;  position: absolute;  text-align: center;}.fa-layers {  display: inline-block;  height: 1em;  position: relative;  text-align: center;  vertical-align: -0.125em;  width: 1em;}.fa-layers svg.svg-inline--fa {  -webkit-transform-origin: center center;          transform-origin: center center;}.fa-layers-text {  left: 50%;  top: 50%;  -webkit-transform: translate(-50%, -50%);          transform: translate(-50%, -50%);  -webkit-transform-origin: center center;          transform-origin: center center;}.fa-layers-counter {  background-color: var(--fa-counter-background-color, #ff253a);  border-radius: var(--fa-counter-border-radius, 1em);  box-sizing: border-box;  color: var(--fa-inverse, #fff);  line-height: var(--fa-counter-line-height, 1);  max-width: var(--fa-counter-max-width, 5em);  min-width: var(--fa-counter-min-width, 1.5em);  overflow: hidden;  padding: var(--fa-counter-padding, 0.25em 0.5em);  right: var(--fa-right, 0);  text-overflow: ellipsis;  top: var(--fa-top, 0);  -webkit-transform: scale(var(--fa-counter-scale, 0.25));          transform: scale(var(--fa-counter-scale, 0.25));  -webkit-transform-origin: top right;          transform-origin: top right;}.fa-layers-bottom-right {  bottom: var(--fa-bottom, 0);  right: var(--fa-right, 0);  top: auto;  -webkit-transform: scale(var(--fa-layers-scale, 0.25));          transform: scale(var(--fa-layers-scale, 0.25));  -webkit-transform-origin: bottom right;          transform-origin: bottom right;}.fa-layers-bottom-left {  bottom: var(--fa-bottom, 0);  left: var(--fa-left, 0);  right: auto;  top: auto;  -webkit-transform: scale(var(--fa-layers-scale, 0.25));          transform: scale(var(--fa-layers-scale, 0.25));  -webkit-transform-origin: bottom left;          transform-origin: bottom left;}.fa-layers-top-right {  top: var(--fa-top, 0);  right: var(--fa-right, 0);  -webkit-transform: scale(var(--fa-layers-scale, 0.25));          transform: scale(var(--fa-layers-scale, 0.25));  -webkit-transform-origin: top right;          transform-origin: top right;}.fa-layers-top-left {  left: var(--fa-left, 0);  right: auto;  top: var(--fa-top, 0);  -webkit-transform: scale(var(--fa-layers-scale, 0.25));          transform: scale(var(--fa-layers-scale, 0.25));  -webkit-transform-origin: top left;          transform-origin: top left;}.fa-1x {  font-size: 1em;}.fa-2x {  font-size: 2em;}.fa-3x {  font-size: 3em;}.fa-4x {  font-size: 4em;}.fa-5x {  font-size: 5em;}.fa-6x {  font-size: 6em;}.fa-7x {  font-size: 7em;}.fa-8x {  font-size: 8em;}.fa-9x {  font-size: 9em;}.fa-10x {  font-size: 10em;}.fa-2xs {  font-size: 0.625em;  line-height: 0.1em;  vertical-align: 0.225em;}.fa-xs {  font-size: 0.75em;  line-height: 0.0833333337em;  vertical-align: 0.125em;}.fa-sm {  font-size: 0.875em;  line-height: 0.0714285718em;  vertical-align: 0.0535714295em;}.fa-lg {  font-size: 1.25em;  line-height: 0.05em;  vertical-align: -0.075em;}.fa-xl {  font-size: 1.5em;  line-height: 0.0416666682em;  vertical-align: -0.125em;}.fa-2xl {  font-size: 2em;  line-height: 0.03125em;  vertical-align: -0.1875em;}.fa-fw {  text-align: center;  width: 1.25em;}.fa-ul {  list-style-type: none;  margin-left: var(--fa-li-margin, 2.5em);  padding-left: 0;}.fa-ul > li {  position: relative;}.fa-li {  left: calc(var(--fa-li-width, 2em) * -1);  position: absolute;  text-align: center;  width: var(--fa-li-width, 2em);  line-height: inherit;}.fa-border {  border-color: var(--fa-border-color, #eee);  border-radius: var(--fa-border-radius, 0.1em);  border-style: var(--fa-border-style, solid);  border-width: var(--fa-border-width, 0.08em);  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);}.fa-pull-left {  float: left;  margin-right: var(--fa-pull-margin, 0.3em);}.fa-pull-right {  float: right;  margin-left: var(--fa-pull-margin, 0.3em);}.fa-beat {  -webkit-animation-name: fa-beat;          animation-name: fa-beat;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);          animation-timing-function: var(--fa-animation-timing, ease-in-out);}.fa-bounce {  -webkit-animation-name: fa-bounce;          animation-name: fa-bounce;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));}.fa-fade {  -webkit-animation-name: fa-fade;          animation-name: fa-fade;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));}.fa-beat-fade {  -webkit-animation-name: fa-beat-fade;          animation-name: fa-beat-fade;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));}.fa-flip {  -webkit-animation-name: fa-flip;          animation-name: fa-flip;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);          animation-timing-function: var(--fa-animation-timing, ease-in-out);}.fa-shake {  -webkit-animation-name: fa-shake;          animation-name: fa-shake;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, linear);          animation-timing-function: var(--fa-animation-timing, linear);}.fa-spin {  -webkit-animation-name: fa-spin;          animation-name: fa-spin;  -webkit-animation-delay: var(--fa-animation-delay, 0s);          animation-delay: var(--fa-animation-delay, 0s);  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 2s);          animation-duration: var(--fa-animation-duration, 2s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, linear);          animation-timing-function: var(--fa-animation-timing, linear);}.fa-spin-reverse {  --fa-animation-direction: reverse;}.fa-pulse,.fa-spin-pulse {  -webkit-animation-name: fa-spin;          animation-name: fa-spin;  -webkit-animation-direction: var(--fa-animation-direction, normal);          animation-direction: var(--fa-animation-direction, normal);  -webkit-animation-duration: var(--fa-animation-duration, 1s);          animation-duration: var(--fa-animation-duration, 1s);  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);          animation-iteration-count: var(--fa-animation-iteration-count, infinite);  -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));          animation-timing-function: var(--fa-animation-timing, steps(8));}@media (prefers-reduced-motion: reduce) {  .fa-beat,.fa-bounce,.fa-fade,.fa-beat-fade,.fa-flip,.fa-pulse,.fa-shake,.fa-spin,.fa-spin-pulse {    -webkit-animation-delay: -1ms;            animation-delay: -1ms;    -webkit-animation-duration: 1ms;            animation-duration: 1ms;    -webkit-animation-iteration-count: 1;            animation-iteration-count: 1;    -webkit-transition-delay: 0s;            transition-delay: 0s;    -webkit-transition-duration: 0s;            transition-duration: 0s;  }}@-webkit-keyframes fa-beat {  0%, 90% {    -webkit-transform: scale(1);            transform: scale(1);  }  45% {    -webkit-transform: scale(var(--fa-beat-scale, 1.25));            transform: scale(var(--fa-beat-scale, 1.25));  }}@keyframes fa-beat {  0%, 90% {    -webkit-transform: scale(1);            transform: scale(1);  }  45% {    -webkit-transform: scale(var(--fa-beat-scale, 1.25));            transform: scale(var(--fa-beat-scale, 1.25));  }}@-webkit-keyframes fa-bounce {  0% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }  10% {    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);            transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);  }  30% {    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));            transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));  }  50% {    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);            transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);  }  57% {    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));            transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));  }  64% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }  100% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }}@keyframes fa-bounce {  0% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }  10% {    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);            transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);  }  30% {    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));            transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));  }  50% {    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);            transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);  }  57% {    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));            transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));  }  64% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }  100% {    -webkit-transform: scale(1, 1) translateY(0);            transform: scale(1, 1) translateY(0);  }}@-webkit-keyframes fa-fade {  50% {    opacity: var(--fa-fade-opacity, 0.4);  }}@keyframes fa-fade {  50% {    opacity: var(--fa-fade-opacity, 0.4);  }}@-webkit-keyframes fa-beat-fade {  0%, 100% {    opacity: var(--fa-beat-fade-opacity, 0.4);    -webkit-transform: scale(1);            transform: scale(1);  }  50% {    opacity: 1;    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));            transform: scale(var(--fa-beat-fade-scale, 1.125));  }}@keyframes fa-beat-fade {  0%, 100% {    opacity: var(--fa-beat-fade-opacity, 0.4);    -webkit-transform: scale(1);            transform: scale(1);  }  50% {    opacity: 1;    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));            transform: scale(var(--fa-beat-fade-scale, 1.125));  }}@-webkit-keyframes fa-flip {  50% {    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));  }}@keyframes fa-flip {  50% {    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));  }}@-webkit-keyframes fa-shake {  0% {    -webkit-transform: rotate(-15deg);            transform: rotate(-15deg);  }  4% {    -webkit-transform: rotate(15deg);            transform: rotate(15deg);  }  8%, 24% {    -webkit-transform: rotate(-18deg);            transform: rotate(-18deg);  }  12%, 28% {    -webkit-transform: rotate(18deg);            transform: rotate(18deg);  }  16% {    -webkit-transform: rotate(-22deg);            transform: rotate(-22deg);  }  20% {    -webkit-transform: rotate(22deg);            transform: rotate(22deg);  }  32% {    -webkit-transform: rotate(-12deg);            transform: rotate(-12deg);  }  36% {    -webkit-transform: rotate(12deg);            transform: rotate(12deg);  }  40%, 100% {    -webkit-transform: rotate(0deg);            transform: rotate(0deg);  }}@keyframes fa-shake {  0% {    -webkit-transform: rotate(-15deg);            transform: rotate(-15deg);  }  4% {    -webkit-transform: rotate(15deg);            transform: rotate(15deg);  }  8%, 24% {    -webkit-transform: rotate(-18deg);            transform: rotate(-18deg);  }  12%, 28% {    -webkit-transform: rotate(18deg);            transform: rotate(18deg);  }  16% {    -webkit-transform: rotate(-22deg);            transform: rotate(-22deg);  }  20% {    -webkit-transform: rotate(22deg);            transform: rotate(22deg);  }  32% {    -webkit-transform: rotate(-12deg);            transform: rotate(-12deg);  }  36% {    -webkit-transform: rotate(12deg);            transform: rotate(12deg);  }  40%, 100% {    -webkit-transform: rotate(0deg);            transform: rotate(0deg);  }}@-webkit-keyframes fa-spin {  0% {    -webkit-transform: rotate(0deg);            transform: rotate(0deg);  }  100% {    -webkit-transform: rotate(360deg);            transform: rotate(360deg);  }}@keyframes fa-spin {  0% {    -webkit-transform: rotate(0deg);            transform: rotate(0deg);  }  100% {    -webkit-transform: rotate(360deg);            transform: rotate(360deg);  }}.fa-rotate-90 {  -webkit-transform: rotate(90deg);          transform: rotate(90deg);}.fa-rotate-180 {  -webkit-transform: rotate(180deg);          transform: rotate(180deg);}.fa-rotate-270 {  -webkit-transform: rotate(270deg);          transform: rotate(270deg);}.fa-flip-horizontal {  -webkit-transform: scale(-1, 1);          transform: scale(-1, 1);}.fa-flip-vertical {  -webkit-transform: scale(1, -1);          transform: scale(1, -1);}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical {  -webkit-transform: scale(-1, -1);          transform: scale(-1, -1);}.fa-rotate-by {  -webkit-transform: rotate(var(--fa-rotate-angle, none));          transform: rotate(var(--fa-rotate-angle, none));}.fa-stack {  display: inline-block;  vertical-align: middle;  height: 2em;  position: relative;  width: 2.5em;}.fa-stack-1x,.fa-stack-2x {  bottom: 0;  left: 0;  margin: auto;  position: absolute;  right: 0;  top: 0;  z-index: var(--fa-stack-z-index, auto);}.svg-inline--fa.fa-stack-1x {  height: 1em;  width: 1.25em;}.svg-inline--fa.fa-stack-2x {  height: 2em;  width: 2.5em;}.fa-inverse {  color: var(--fa-inverse, #fff);}.sr-only,.fa-sr-only {  position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border-width: 0;}.sr-only-focusable:not(:focus),.fa-sr-only-focusable:not(:focus) {  position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border-width: 0;}.svg-inline--fa .fa-primary {  fill: var(--fa-primary-color, currentColor);  opacity: var(--fa-primary-opacity, 1);}.svg-inline--fa .fa-secondary {  fill: var(--fa-secondary-color, currentColor);  opacity: var(--fa-secondary-opacity, 0.4);}.svg-inline--fa.fa-swap-opacity .fa-primary {  opacity: var(--fa-secondary-opacity, 0.4);}.svg-inline--fa.fa-swap-opacity .fa-secondary {  opacity: var(--fa-primary-opacity, 1);}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary {  fill: black;}.fad.fa-inverse,.fa-duotone.fa-inverse {  color: var(--fa-inverse, #fff);}')
+			$elm$html$Html$text(':root, :host {  --fa-font-solid: normal 900 1em/1 \"Font Awesome 6 Free\";  --fa-font-regular: normal 400 1em/1 \"Font Awesome 6 Free\";  --fa-font-light: normal 300 1em/1 \"Font Awesome 6 Pro\";  --fa-font-thin: normal 100 1em/1 \"Font Awesome 6 Pro\";  --fa-font-duotone: normal 900 1em/1 \"Font Awesome 6 Duotone\";  --fa-font-duotone-regular: normal 400 1em/1 \"Font Awesome 6 Duotone\";  --fa-font-duotone-light: normal 300 1em/1 \"Font Awesome 6 Duotone\";  --fa-font-duotone-thin: normal 100 1em/1 \"Font Awesome 6 Duotone\";  --fa-font-brands: normal 400 1em/1 \"Font Awesome 6 Brands\";  --fa-font-sharp-solid: normal 900 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-regular: normal 400 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-light: normal 300 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-thin: normal 100 1em/1 \"Font Awesome 6 Sharp\";  --fa-font-sharp-duotone-solid: normal 900 1em/1 \"Font Awesome 6 Sharp Duotone\";  --fa-font-sharp-duotone-regular: normal 400 1em/1 \"Font Awesome 6 Sharp Duotone\";  --fa-font-sharp-duotone-light: normal 300 1em/1 \"Font Awesome 6 Sharp Duotone\";  --fa-font-sharp-duotone-thin: normal 100 1em/1 \"Font Awesome 6 Sharp Duotone\";}svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {  overflow: visible;  box-sizing: content-box;}.svg-inline--fa {  display: var(--fa-display, inline-block);  height: 1em;  overflow: visible;  vertical-align: -0.125em;}.svg-inline--fa.fa-2xs {  vertical-align: 0.1em;}.svg-inline--fa.fa-xs {  vertical-align: 0em;}.svg-inline--fa.fa-sm {  vertical-align: -0.0714285705em;}.svg-inline--fa.fa-lg {  vertical-align: -0.2em;}.svg-inline--fa.fa-xl {  vertical-align: -0.25em;}.svg-inline--fa.fa-2xl {  vertical-align: -0.3125em;}.svg-inline--fa.fa-pull-left {  margin-right: var(--fa-pull-margin, 0.3em);  width: auto;}.svg-inline--fa.fa-pull-right {  margin-left: var(--fa-pull-margin, 0.3em);  width: auto;}.svg-inline--fa.fa-li {  width: var(--fa-li-width, 2em);  top: 0.25em;}.svg-inline--fa.fa-fw {  width: var(--fa-fw-width, 1.25em);}.fa-layers svg.svg-inline--fa {  bottom: 0;  left: 0;  margin: auto;  position: absolute;  right: 0;  top: 0;}.fa-layers-counter, .fa-layers-text {  display: inline-block;  position: absolute;  text-align: center;}.fa-layers {  display: inline-block;  height: 1em;  position: relative;  text-align: center;  vertical-align: -0.125em;  width: 1em;}.fa-layers svg.svg-inline--fa {  transform-origin: center center;}.fa-layers-text {  left: 50%;  top: 50%;  transform: translate(-50%, -50%);  transform-origin: center center;}.fa-layers-counter {  background-color: var(--fa-counter-background-color, #ff253a);  border-radius: var(--fa-counter-border-radius, 1em);  box-sizing: border-box;  color: var(--fa-inverse, #fff);  line-height: var(--fa-counter-line-height, 1);  max-width: var(--fa-counter-max-width, 5em);  min-width: var(--fa-counter-min-width, 1.5em);  overflow: hidden;  padding: var(--fa-counter-padding, 0.25em 0.5em);  right: var(--fa-right, 0);  text-overflow: ellipsis;  top: var(--fa-top, 0);  transform: scale(var(--fa-counter-scale, 0.25));  transform-origin: top right;}.fa-layers-bottom-right {  bottom: var(--fa-bottom, 0);  right: var(--fa-right, 0);  top: auto;  transform: scale(var(--fa-layers-scale, 0.25));  transform-origin: bottom right;}.fa-layers-bottom-left {  bottom: var(--fa-bottom, 0);  left: var(--fa-left, 0);  right: auto;  top: auto;  transform: scale(var(--fa-layers-scale, 0.25));  transform-origin: bottom left;}.fa-layers-top-right {  top: var(--fa-top, 0);  right: var(--fa-right, 0);  transform: scale(var(--fa-layers-scale, 0.25));  transform-origin: top right;}.fa-layers-top-left {  left: var(--fa-left, 0);  right: auto;  top: var(--fa-top, 0);  transform: scale(var(--fa-layers-scale, 0.25));  transform-origin: top left;}.fa-1x {  font-size: 1em;}.fa-2x {  font-size: 2em;}.fa-3x {  font-size: 3em;}.fa-4x {  font-size: 4em;}.fa-5x {  font-size: 5em;}.fa-6x {  font-size: 6em;}.fa-7x {  font-size: 7em;}.fa-8x {  font-size: 8em;}.fa-9x {  font-size: 9em;}.fa-10x {  font-size: 10em;}.fa-2xs {  font-size: 0.625em;  line-height: 0.1em;  vertical-align: 0.225em;}.fa-xs {  font-size: 0.75em;  line-height: 0.0833333337em;  vertical-align: 0.125em;}.fa-sm {  font-size: 0.875em;  line-height: 0.0714285718em;  vertical-align: 0.0535714295em;}.fa-lg {  font-size: 1.25em;  line-height: 0.05em;  vertical-align: -0.075em;}.fa-xl {  font-size: 1.5em;  line-height: 0.0416666682em;  vertical-align: -0.125em;}.fa-2xl {  font-size: 2em;  line-height: 0.03125em;  vertical-align: -0.1875em;}.fa-fw {  text-align: center;  width: 1.25em;}.fa-ul {  list-style-type: none;  margin-left: var(--fa-li-margin, 2.5em);  padding-left: 0;}.fa-ul > li {  position: relative;}.fa-li {  left: calc(-1 * var(--fa-li-width, 2em));  position: absolute;  text-align: center;  width: var(--fa-li-width, 2em);  line-height: inherit;}.fa-border {  border-color: var(--fa-border-color, #eee);  border-radius: var(--fa-border-radius, 0.1em);  border-style: var(--fa-border-style, solid);  border-width: var(--fa-border-width, 0.08em);  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);}.fa-pull-left {  float: left;  margin-right: var(--fa-pull-margin, 0.3em);}.fa-pull-right {  float: right;  margin-left: var(--fa-pull-margin, 0.3em);}.fa-beat {  animation-name: fa-beat;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, ease-in-out);}.fa-bounce {  animation-name: fa-bounce;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));}.fa-fade {  animation-name: fa-fade;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));}.fa-beat-fade {  animation-name: fa-beat-fade;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));}.fa-flip {  animation-name: fa-flip;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, ease-in-out);}.fa-shake {  animation-name: fa-shake;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, linear);}.fa-spin {  animation-name: fa-spin;  animation-delay: var(--fa-animation-delay, 0s);  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 2s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, linear);}.fa-spin-reverse {  --fa-animation-direction: reverse;}.fa-pulse,.fa-spin-pulse {  animation-name: fa-spin;  animation-direction: var(--fa-animation-direction, normal);  animation-duration: var(--fa-animation-duration, 1s);  animation-iteration-count: var(--fa-animation-iteration-count, infinite);  animation-timing-function: var(--fa-animation-timing, steps(8));}@media (prefers-reduced-motion: reduce) {  .fa-beat,.fa-bounce,.fa-fade,.fa-beat-fade,.fa-flip,.fa-pulse,.fa-shake,.fa-spin,.fa-spin-pulse {    animation-delay: -1ms;    animation-duration: 1ms;    animation-iteration-count: 1;    transition-delay: 0s;    transition-duration: 0s;  }}@keyframes fa-beat {  0%, 90% {    transform: scale(1);  }  45% {    transform: scale(var(--fa-beat-scale, 1.25));  }}@keyframes fa-bounce {  0% {    transform: scale(1, 1) translateY(0);  }  10% {    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);  }  30% {    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));  }  50% {    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);  }  57% {    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));  }  64% {    transform: scale(1, 1) translateY(0);  }  100% {    transform: scale(1, 1) translateY(0);  }}@keyframes fa-fade {  50% {    opacity: var(--fa-fade-opacity, 0.4);  }}@keyframes fa-beat-fade {  0%, 100% {    opacity: var(--fa-beat-fade-opacity, 0.4);    transform: scale(1);  }  50% {    opacity: 1;    transform: scale(var(--fa-beat-fade-scale, 1.125));  }}@keyframes fa-flip {  50% {    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));  }}@keyframes fa-shake {  0% {    transform: rotate(-15deg);  }  4% {    transform: rotate(15deg);  }  8%, 24% {    transform: rotate(-18deg);  }  12%, 28% {    transform: rotate(18deg);  }  16% {    transform: rotate(-22deg);  }  20% {    transform: rotate(22deg);  }  32% {    transform: rotate(-12deg);  }  36% {    transform: rotate(12deg);  }  40%, 100% {    transform: rotate(0deg);  }}@keyframes fa-spin {  0% {    transform: rotate(0deg);  }  100% {    transform: rotate(360deg);  }}.fa-rotate-90 {  transform: rotate(90deg);}.fa-rotate-180 {  transform: rotate(180deg);}.fa-rotate-270 {  transform: rotate(270deg);}.fa-flip-horizontal {  transform: scale(-1, 1);}.fa-flip-vertical {  transform: scale(1, -1);}.fa-flip-both,.fa-flip-horizontal.fa-flip-vertical {  transform: scale(-1, -1);}.fa-rotate-by {  transform: rotate(var(--fa-rotate-angle, 0));}.fa-stack {  display: inline-block;  vertical-align: middle;  height: 2em;  position: relative;  width: 2.5em;}.fa-stack-1x,.fa-stack-2x {  bottom: 0;  left: 0;  margin: auto;  position: absolute;  right: 0;  top: 0;  z-index: var(--fa-stack-z-index, auto);}.svg-inline--fa.fa-stack-1x {  height: 1em;  width: 1.25em;}.svg-inline--fa.fa-stack-2x {  height: 2em;  width: 2.5em;}.fa-inverse {  color: var(--fa-inverse, #fff);}.sr-only,.fa-sr-only {  position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border-width: 0;}.sr-only-focusable:not(:focus),.fa-sr-only-focusable:not(:focus) {  position: absolute;  width: 1px;  height: 1px;  padding: 0;  margin: -1px;  overflow: hidden;  clip: rect(0, 0, 0, 0);  white-space: nowrap;  border-width: 0;}.svg-inline--fa .fa-primary {  fill: var(--fa-primary-color, currentColor);  opacity: var(--fa-primary-opacity, 1);}.svg-inline--fa .fa-secondary {  fill: var(--fa-secondary-color, currentColor);  opacity: var(--fa-secondary-opacity, 0.4);}.svg-inline--fa.fa-swap-opacity .fa-primary {  opacity: var(--fa-secondary-opacity, 0.4);}.svg-inline--fa.fa-swap-opacity .fa-secondary {  opacity: var(--fa-primary-opacity, 1);}.svg-inline--fa mask .fa-primary,.svg-inline--fa mask .fa-secondary {  fill: black;}')
 		]));
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$lazy = _VirtualDom_lazy;
 var $elm$html$Html$Lazy$lazy = $elm$virtual_dom$VirtualDom$lazy;
 var $author$project$Main$Link = F3(
 	function (name, url, icon) {
-		return {icon: icon, name: name, url: url};
+		return {ab: icon, aM: name, au: url};
 	});
 var $lattyware$elm_fontawesome$FontAwesome$IconDef = F4(
 	function (prefix, name, size, paths) {
-		return {name: name, paths: paths, prefix: prefix, size: size};
+		return {aM: name, aQ: paths, aR: prefix, aU: size};
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Solid$Definitions$envelope = A4(
 	$lattyware$elm_fontawesome$FontAwesome$IconDef,
 	'fas',
 	'envelope',
 	_Utils_Tuple2(512, 512),
-	_Utils_Tuple2('M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z', $elm$core$Maybe$Nothing));
-var $lattyware$elm_fontawesome$FontAwesome$Internal$Icon = function (a) {
-	return {$: 'Icon', a: a};
-};
+	_Utils_Tuple2('M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z', $elm$core$Maybe$Nothing));
+var $lattyware$elm_fontawesome$FontAwesome$Internal$Icon = $elm$core$Basics$identity;
 var $lattyware$elm_fontawesome$FontAwesome$present = function (icon) {
-	return $lattyware$elm_fontawesome$FontAwesome$Internal$Icon(
-		{attributes: _List_Nil, icon: icon, id: $elm$core$Maybe$Nothing, outer: $elm$core$Maybe$Nothing, role: 'img', title: $elm$core$Maybe$Nothing, transforms: _List_Nil});
+	return {G: _List_Nil, ab: icon, L: $elm$core$Maybe$Nothing, O: $elm$core$Maybe$Nothing, Q: 'img', aW: $elm$core$Maybe$Nothing, K: _List_Nil};
 };
 var $lattyware$elm_fontawesome$FontAwesome$Solid$envelope = $lattyware$elm_fontawesome$FontAwesome$present($lattyware$elm_fontawesome$FontAwesome$Solid$Definitions$envelope);
 var $lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$github = A4(
@@ -5983,7 +5964,7 @@ var $elm$svg$Svg$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$svg$Svg$title = $elm$svg$Svg$trustedNode('title');
 var $elm$core$Maybe$map = F2(
 	function (f, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return $elm$core$Maybe$Just(
 				f(value));
@@ -5993,7 +5974,7 @@ var $elm$core$Maybe$map = F2(
 	});
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return value;
 		} else {
@@ -6001,19 +5982,19 @@ var $elm$core$Maybe$withDefault = F2(
 		}
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions = function (_v1) {
-	var icon = _v1.a.icon;
-	var outer = _v1.a.outer;
+	var icon = _v1.ab;
+	var outer = _v1.O;
 	return A2(
 		$elm$core$Maybe$withDefault,
-		icon.size,
+		icon.aU,
 		A2($elm$core$Maybe$map, $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensionsInternal, outer));
 };
 var $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensionsInternal = function (_v0) {
-	var icon = _v0.a.icon;
-	var outer = _v0.a.outer;
+	var icon = _v0.ab;
+	var outer = _v0.O;
 	return A2(
 		$elm$core$Maybe$withDefault,
-		icon.size,
+		icon.aU,
 		A2($elm$core$Maybe$map, $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions, outer));
 };
 var $elm$svg$Svg$defs = $elm$svg$Svg$trustedNode('defs');
@@ -6038,16 +6019,16 @@ var $elm$core$Basics$not = _Basics_not;
 var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$add = F2(
 	function (transform, combined) {
 		switch (transform.$) {
-			case 'Scale':
+			case 0:
 				var by = transform.a;
 				return _Utils_update(
 					combined,
-					{size: combined.size + by});
-			case 'Reposition':
+					{aU: combined.aU + by});
+			case 1:
 				var axis = transform.a;
 				var by = transform.b;
 				var _v1 = function () {
-					if (axis.$ === 'Vertical') {
+					if (!axis) {
 						return _Utils_Tuple2(0, by);
 					} else {
 						return _Utils_Tuple2(by, 0);
@@ -6057,27 +6038,27 @@ var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$add = F2(
 				var y = _v1.b;
 				return _Utils_update(
 					combined,
-					{x: combined.x + x, y: combined.y + y});
-			case 'Rotate':
+					{ax: combined.ax + x, ay: combined.ay + y});
+			case 2:
 				var rotation = transform.a;
 				return _Utils_update(
 					combined,
-					{rotate: combined.rotate + rotation});
+					{aT: combined.aT + rotation});
 			default:
 				var axis = transform.a;
-				if (axis.$ === 'Vertical') {
+				if (!axis) {
 					return _Utils_update(
 						combined,
-						{flipY: !combined.flipY});
+						{aH: !combined.aH});
 				} else {
 					return _Utils_update(
 						combined,
-						{flipX: !combined.flipX});
+						{aG: !combined.aG});
 				}
 		}
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize = 16;
-var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform = {flipX: false, flipY: false, rotate: 0, size: $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize, x: 0, y: 0};
+var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform = {aG: false, aH: false, aT: 0, aU: $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize, ax: 0, ay: 0};
 var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$combine = function (transforms) {
 	return A3($elm$core$List$foldl, $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$add, $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaninglessTransform, transforms);
 };
@@ -6092,20 +6073,20 @@ var $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$transformForSvg =
 	function (containerWidth, iconWidth, transform) {
 		var path = 'translate(' + ($elm$core$String$fromFloat((iconWidth / 2) * (-1)) + ' -256)');
 		var outer = 'translate(' + ($elm$core$String$fromFloat(containerWidth / 2) + ' 256)');
-		var innerTranslate = 'translate(' + ($elm$core$String$fromFloat(transform.x * 32) + (',' + ($elm$core$String$fromFloat(transform.y * 32) + ') ')));
-		var innerRotate = 'rotate(' + ($elm$core$String$fromFloat(transform.rotate) + ' 0 0)');
-		var flipY = transform.flipY ? (-1) : 1;
-		var scaleY = (transform.size / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipY;
-		var flipX = transform.flipX ? (-1) : 1;
-		var scaleX = (transform.size / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipX;
+		var innerTranslate = 'translate(' + ($elm$core$String$fromFloat(transform.ax * 32) + (',' + ($elm$core$String$fromFloat(transform.ay * 32) + ') ')));
+		var innerRotate = 'rotate(' + ($elm$core$String$fromFloat(transform.aT) + ' 0 0)');
+		var flipY = transform.aH ? (-1) : 1;
+		var scaleY = (transform.aU / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipY;
+		var flipX = transform.aG ? (-1) : 1;
+		var scaleX = (transform.aU / $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$baseSize) * flipX;
 		var innerScale = 'scale(' + ($elm$core$String$fromFloat(scaleX) + (', ' + ($elm$core$String$fromFloat(scaleY) + ') ')));
 		return {
-			inner: $elm$svg$Svg$Attributes$transform(
+			aL: $elm$svg$Svg$Attributes$transform(
 				_Utils_ap(
 					innerTranslate,
 					_Utils_ap(innerScale, innerRotate))),
-			outer: $elm$svg$Svg$Attributes$transform(outer),
-			path: $elm$svg$Svg$Attributes$transform(path)
+			O: $elm$svg$Svg$Attributes$transform(outer),
+			af: $elm$svg$Svg$Attributes$transform(path)
 		};
 	});
 var $elm$svg$Svg$Attributes$d = _VirtualDom_attribute('d');
@@ -6122,8 +6103,8 @@ var $lattyware$elm_fontawesome$FontAwesome$Svg$viewPath = F2(
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Svg$viewPaths = F2(
 	function (attrs, _v0) {
-		var paths = _v0.paths;
-		if (paths.b.$ === 'Nothing') {
+		var paths = _v0.aQ;
+		if (paths.b.$ === 1) {
 			var only = paths.a;
 			var _v2 = paths.b;
 			return A2($lattyware$elm_fontawesome$FontAwesome$Svg$viewPath, attrs, only);
@@ -6157,9 +6138,9 @@ var $lattyware$elm_fontawesome$FontAwesome$Svg$viewPaths = F2(
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Svg$viewWithTransform = F3(
 	function (color, _v0, icon) {
-		var outer = _v0.outer;
-		var inner = _v0.inner;
-		var path = _v0.path;
+		var outer = _v0.O;
+		var inner = _v0.aL;
+		var path = _v0.af;
 		return A2(
 			$elm$svg$Svg$g,
 			_List_fromArray(
@@ -6185,19 +6166,19 @@ var $lattyware$elm_fontawesome$FontAwesome$Svg$viewWithTransform = F3(
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Svg$viewInColor = F2(
 	function (color, fullIcon) {
-		var icon = fullIcon.a.icon;
-		var transforms = fullIcon.a.transforms;
-		var id = fullIcon.a.id;
-		var outer = fullIcon.a.outer;
+		var icon = fullIcon.ab;
+		var transforms = fullIcon.K;
+		var id = fullIcon.L;
+		var outer = fullIcon.O;
 		var combinedTransforms = $lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$meaningfulTransform(transforms);
-		var _v0 = icon.size;
+		var _v0 = icon.aU;
 		var width = _v0.a;
 		var _v1 = $lattyware$elm_fontawesome$FontAwesome$Internal$topLevelDimensions(fullIcon);
 		var topLevelWidth = _v1.a;
-		if (combinedTransforms.$ === 'Just') {
+		if (!combinedTransforms.$) {
 			var meaningfulTransform = combinedTransforms.a;
 			var svgTransform = A3($lattyware$elm_fontawesome$FontAwesome$Transforms$Internal$transformForSvg, topLevelWidth, width, meaningfulTransform);
-			if (outer.$ === 'Just') {
+			if (!outer.$) {
 				var outerIcon = outer.a;
 				return A4($lattyware$elm_fontawesome$FontAwesome$Svg$viewMaskedWithTransform, color, svgTransform, icon, outerIcon);
 			} else {
@@ -6215,7 +6196,7 @@ var $lattyware$elm_fontawesome$FontAwesome$Svg$viewInColor = F2(
 	});
 var $lattyware$elm_fontawesome$FontAwesome$Svg$viewMaskedWithTransform = F4(
 	function (color, transforms, exclude, include) {
-		var id = include.a.id;
+		var id = include.L;
 		var alwaysId = A2($elm$core$Maybe$withDefault, '', id);
 		var clipId = 'clip-' + alwaysId;
 		var maskId = 'mask-' + alwaysId;
@@ -6261,16 +6242,16 @@ var $lattyware$elm_fontawesome$FontAwesome$Svg$view = $lattyware$elm_fontawesome
 var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
 var $lattyware$elm_fontawesome$FontAwesome$internalView = F2(
 	function (fullIcon, extraAttributes) {
-		var icon = fullIcon.a.icon;
-		var transforms = fullIcon.a.transforms;
-		var role = fullIcon.a.role;
-		var id = fullIcon.a.id;
-		var title = fullIcon.a.title;
-		var outer = fullIcon.a.outer;
-		var attributes = fullIcon.a.attributes;
+		var icon = fullIcon.ab;
+		var transforms = fullIcon.K;
+		var role = fullIcon.Q;
+		var id = fullIcon.L;
+		var title = fullIcon.aW;
+		var outer = fullIcon.O;
+		var attributes = fullIcon.G;
 		var contents = $lattyware$elm_fontawesome$FontAwesome$Svg$view(fullIcon);
 		var _v0 = function () {
-			if (title.$ === 'Just') {
+			if (!title.$) {
 				var givenTitle = title.a;
 				var titleId = A2($elm$core$Maybe$withDefault, '', id) + '-title';
 				return _Utils_Tuple2(
@@ -6305,7 +6286,7 @@ var $lattyware$elm_fontawesome$FontAwesome$internalView = F2(
 		var classes = _List_fromArray(
 			[
 				'svg-inline--fa',
-				'fa-' + icon.name,
+				'fa-' + icon.aM,
 				'fa-w-' + $elm$core$String$fromInt(aspectRatio)
 			]);
 		return A2(
@@ -6340,11 +6321,11 @@ var $author$project$Main$link_icon = function (link) {
 			[
 				$elm$html$Html$Attributes$class('flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
 				$elm$html$Html$Attributes$class('text-prime-light-gray dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black'),
-				$elm$html$Html$Attributes$href(link.url)
+				$elm$html$Html$Attributes$href(link.au)
 			]),
 		_List_fromArray(
 			[
-				$lattyware$elm_fontawesome$FontAwesome$view(link.icon)
+				$lattyware$elm_fontawesome$FontAwesome$view(link.ab)
 			]));
 };
 var $lattyware$elm_fontawesome$FontAwesome$Brands$Definitions$linkedin = A4(
@@ -6374,7 +6355,7 @@ var $author$project$Main$padInt = function (num) {
 };
 var $author$project$Main$StyledText = F2(
 	function (text, style) {
-		return {style: style, text: text};
+		return {aq: style, at: text};
 	});
 var $author$project$Main$prompt_top_parts = function (time) {
 	return _List_fromArray(
@@ -6402,11 +6383,11 @@ var $author$project$Main$prompt_top_row = function (parts) {
 					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class(part.style)
+							$elm$html$Html$Attributes$class(part.aq)
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text(part.text)
+							$elm$html$Html$text(part.at)
 						]));
 			},
 			parts));
@@ -6456,7 +6437,7 @@ var $author$project$Main$title = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.prompt)
+						$elm$html$Html$text(model.ak)
 					])),
 				A2(
 				$elm$html$Html$h1,
@@ -6467,7 +6448,7 @@ var $author$project$Main$title = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(model.title_text)
+						$elm$html$Html$text(model.J)
 					])),
 				A2(
 				$elm$html$Html$h1,
@@ -6478,7 +6459,7 @@ var $author$project$Main$title = function (model) {
 						$elm$html$Html$Attributes$classList(
 						_List_fromArray(
 							[
-								_Utils_Tuple2('animate-blink', !model.typing)
+								_Utils_Tuple2('animate-blink', !model.E)
 							]))
 					]),
 				_List_fromArray(
@@ -6501,8 +6482,8 @@ var $elm$time$Time$toAdjustedMinutesHelp = F3(
 			} else {
 				var era = eras.a;
 				var olderEras = eras.b;
-				if (_Utils_cmp(era.start, posixMinutes) < 0) {
-					return posixMinutes + era.offset;
+				if (_Utils_cmp(era.S, posixMinutes) < 0) {
+					return posixMinutes + era.ae;
 				} else {
 					var $temp$defaultOffset = defaultOffset,
 						$temp$posixMinutes = posixMinutes,
@@ -6547,9 +6528,9 @@ var $elm$time$Time$toMinute = F2(
 	});
 var $author$project$Main$view = function (model) {
 	var minute = $author$project$Main$padInt(
-		A2($elm$time$Time$toMinute, model.timeZone, model.currentTime));
+		A2($elm$time$Time$toMinute, model.I, model.H));
 	var hour = $author$project$Main$padInt(
-		A2($elm$time$Time$toHour, model.timeZone, model.currentTime));
+		A2($elm$time$Time$toHour, model.I, model.H));
 	var time = hour + (':' + minute);
 	return A2(
 		$elm$html$Html$div,
@@ -6567,6 +6548,6 @@ var $author$project$Main$view = function (model) {
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
-	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
+	{aK: $author$project$Main$init, aV: $author$project$Main$subscriptions, aX: $author$project$Main$update, aY: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
+	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
