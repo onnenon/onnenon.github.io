@@ -11,7 +11,7 @@ jobs:
       - uses: jorelali/setup-elm@v6
         with:
           elm-version: 0.19.1
-      - run: npm install -D tailwindcss
+      - run: npm install tailwindcss @tailwindcss/cli
       - name: Build
         run: make build-release
       - name: Upload artifact
