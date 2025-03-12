@@ -1,6 +1,63 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-*: initial;
+  --font-sans: Titillium Web, Open Sans, sans-serif;
+  --font-serif: Merriweather, serif;
+  --font-mono: Mononoki, monospace;
+
+  --color-*: initial;
+  --color-prime-dark-black: #0d1117;
+  --color-prime-dark-purple: #d2a8ff;
+  --color-prime-dark-gray: #8b949e;
+  --color-prime-dark-green: #56d364;
+  --color-prime-dark-yellow: #ffa656;
+  --color-prime-dark-white: #e6edf3;
+  --color-prime-dark-red: #ff7b72;
+  --color-prime-dark-blue: #79c0ff;
+  --color-prime-light-purple: #8250df;
+  --color-prime-light-blue: #0350ae;
+  --color-prime-light-green: #1b7f36;
+  --color-prime-light-yellow: #953800;
+  --color-prime-light-red: #cf212e;
+  --color-prime-light-gray: #484f58;
+  --color-prime-light-black: #1f2328;
+  --color-prime-light-white: #f6f8fa;
+
+  --animate-blink: blink 1.2s step-end infinite;
+
+  @keyframes blink {
+    0%,
+    100% {
+      color: transparent;
+    }
+    50% {
+      color: #8b949e;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @font-face {
   font-family: "Cascadia Code";
@@ -25,5 +82,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-@import "tailwindcss";

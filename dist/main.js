@@ -6319,8 +6319,8 @@ var $author$project$Main$link_icon = function (link) {
 		$elm$html$Html$a,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
-				$elm$html$Html$Attributes$class('text-prime-light-gray dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black'),
+				$elm$html$Html$Attributes$class('shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]'),
+				$elm$html$Html$Attributes$class('text-prime-light-gray dark:text-prime-dark-gray dark:hover:text-prime-dark-white hover:text-prime-light-black'),
 				$elm$html$Html$Attributes$href(link.au)
 			]),
 		_List_fromArray(

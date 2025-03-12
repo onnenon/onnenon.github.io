@@ -172,8 +172,8 @@ link_icons =
 link_icon : Link -> Html.Html msg
 link_icon link =
     a
-        [ class "flex-shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
-        , class "text-prime-light-gray dark:text-prime-dark-gray hover:dark:text-prime-dark-white hover:text-prime-light-black"
+        [ class "shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
+        , class "text-prime-light-gray dark:text-prime-dark-gray dark:hover:text-prime-dark-white hover:text-prime-light-black"
         , href link.url
         ]
         [ Icon.view link.icon ]
