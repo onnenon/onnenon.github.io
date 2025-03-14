@@ -128,10 +128,10 @@ title : Model -> Html msg
 title model =
     div [ class "flex flex-row" ]
         [ h1
-            [ class title_font_style, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
+            [ class titleFontStyle, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
             [ text model.prompt ]
-        , h1 [ class title_font_style, class "dark:text-prime-dark-white text-prime-light-black" ] [ text model.title_text ]
-        , h1 [ class title_font_style, class "text-prime-dark-gray flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
+        , h1 [ class titleFontStyle, class "dark:text-prime-dark-white text-prime-light-black" ] [ text model.title_text ]
+        , h1 [ class titleFontStyle, class "text-prime-dark-gray flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
         ]
 
 
@@ -165,12 +165,12 @@ linkIcons =
             ]
     in
     links
-        |> List.map link_icon
+        |> List.map linkIcon
         |> div [ class "flex flex-row justify-start" ]
 
 
-link_icon : Link -> Html.Html msg
-link_icon link =
+linkIcon : Link -> Html.Html msg
+linkIcon link =
     a
         [ class "shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
         , class "text-prime-light-gray dark:text-prime-dark-gray dark:hover:text-prime-dark-white hover:text-prime-light-black"
@@ -179,8 +179,8 @@ link_icon link =
         [ Icon.view link.icon ]
 
 
-title_font_style : String
-title_font_style =
+titleFontStyle : String
+titleFontStyle =
     "flex font-mono select-none md:text-8xl text-[14vw]"
 
 
