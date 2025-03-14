@@ -169,7 +169,7 @@ linkIcons =
         |> div [ class "flex flex-row justify-start" ]
 
 
-linkIcon : Link -> Html.Html msg
+linkIcon : Link -> Html msg
 linkIcon link =
     a
         [ class "shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
