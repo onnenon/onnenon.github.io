@@ -6,7 +6,7 @@ import FontAwesome.Attributes as Icon
 import FontAwesome.Brands as Icon
 import FontAwesome.Solid as Icon
 import FontAwesome.Styles as Icon
-import Html exposing (a, div, h1, text)
+import Html exposing (Html, a, div, h1, text)
 import Html.Attributes exposing (..)
 import Html.Lazy exposing (lazy)
 import Process
@@ -55,7 +55,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         TypeCommand ->
-            ( type_command model, Random.generate DelayTypeCommand (Random.int 100 1000) )
+            ( typeCommand model, Random.generate DelayTypeCommand (Random.int 100 1000) )
 
         StopTyping ->
             ( { model | typing = False }, Cmd.none )
@@ -79,7 +79,7 @@ padInt num =
         String.fromInt num
 
 
-view : Model -> Html.Html msg
+view : Model -> Html msg
 view model =
     let
         hour =
@@ -94,14 +94,14 @@ view model =
     div
         [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
         [ Icon.css
-        , prompt_top_row <| prompt_top_parts time
+        , promptTopRow <| promptTopParts time
         , lazy title model
-        , link_icons
+        , linkIcons
         ]
 
 
-type_command : Model -> Model
-type_command model =
+typeCommand : Model -> Model
+typeCommand model =
     if String.isEmpty model.command then
         { model | typing = False }
 
@@ -124,7 +124,7 @@ subscriptions model =
         ]
 
 
-title : Model -> Html.Html msg
+title : Model -> Html msg
 title model =
     div [ class "flex flex-row" ]
         [ h1
@@ -135,16 +135,16 @@ title model =
         ]
 
 
-prompt_top_row : List StyledText -> Html.Html msg
-prompt_top_row parts =
+promptTopRow : List StyledText -> Html msg
+promptTopRow parts =
     parts
         |> List.map (\part -> div [ class part.style ] [ text part.text ])
         |> div
             [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none" ]
 
 
-prompt_top_parts : String -> List StyledText
-prompt_top_parts time =
+promptTopParts : String -> List StyledText
+promptTopParts time =
     [ StyledText time "text-prime-light-green dark:text-prime-dark-red pr-4"
     , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
     , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
@@ -155,8 +155,8 @@ prompt_top_parts time =
     ]
 
 
-link_icons : Html.Html msg
-link_icons =
+linkIcons : Html msg
+linkIcons =
     let
         links =
             [ Link "GitHub" "https://github.com/onnenon" Icon.github
