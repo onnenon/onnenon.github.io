@@ -1,13 +1,14 @@
 css:
 	npx @tailwindcss/cli -i ./src/input.css -o ./dist/styles.css
+
 copy-fonts:
-    mkdir -p dist/fonts
-    cp -r src/fonts/* dist/fonts/
+	mkdir -p dist/fonts
+	cp -r src/fonts/* dist/fonts/
 
 css-watch:
 	npx @tailwindcss/cli -i ./src/input.css -o ./dist/styles.css --watch
 
-build: css
+build: css copy-fonts
 	npx @tailwindcss/cli -i ./src/input.css -o ./dist/styles.css --minify
 	elm make src/Main.elm --optimize --output=dist/main.js
 
