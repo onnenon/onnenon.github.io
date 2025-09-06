@@ -1,7 +1,5 @@
 module Main exposing (main)
 
--- import Html.Lazy exposing (lazy)
-
 import Browser
 import FontAwesome as Icon exposing (Icon)
 import FontAwesome.Attributes as Icon
@@ -42,7 +40,6 @@ type alias Link =
 
 type Msg
     = ContinueTyping
-    | CompleteTyping
     | ScheduleNextCharacter Int
     | TimeUpdate Time.Posix
     | AdjustTimeZone Time.Zone
@@ -78,10 +75,15 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         ContinueTyping ->
-            ( processNextCharacter model, Random.generate ScheduleNextCharacter (Random.int 100 1000) )
+            let
+                newModel =
+                    processNextCharacter model
+            in
+            if String.isEmpty newModel.title.remaining then
+                ( { newModel | title = { displayed = newModel.title.displayed, remaining = "", typing = False } }, Cmd.none )
 
-        CompleteTyping ->
-            ( { model | title = { displayed = model.title.displayed, remaining = model.title.remaining, typing = False } }, Cmd.none )
+            else
+                ( newModel, Random.generate ScheduleNextCharacter (Random.int 100 1000) )
 
         ScheduleNextCharacter delay ->
             ( model, Process.sleep (toFloat delay) |> Task.perform (always ContinueTyping) )
@@ -147,12 +149,16 @@ processNextCharacter model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.batch
-        [ if model.title.typing then
-            Time.every 500 (always ContinueTyping)
+    let
+        typingSubscription =
+            if model.title.typing then
+                Time.every 500 (always ContinueTyping)
 
-          else
-            Sub.none
+            else
+                Sub.none
+    in
+    Sub.batch
+        [ typingSubscription
         , Time.every 1000 TimeUpdate
         ]
 
