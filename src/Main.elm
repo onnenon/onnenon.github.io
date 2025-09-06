@@ -1,5 +1,7 @@
 module Main exposing (main)
 
+-- import Html.Lazy exposing (lazy)
+
 import Browser
 import FontAwesome as Icon exposing (Icon)
 import FontAwesome.Attributes as Icon
@@ -8,7 +10,6 @@ import FontAwesome.Solid as Icon
 import FontAwesome.Styles as Icon
 import Html exposing (Html, a, div, h1, text)
 import Html.Attributes exposing (..)
-import Html.Lazy exposing (lazy)
 import Process
 import Random
 import Task
@@ -16,11 +17,21 @@ import Time
 
 
 type alias Model =
-    { currentTime : Time.Posix
-    , timeZone : Time.Zone
+    { time : TimeInfo
+    , title : TitleState
     , prompt : String
-    , title_text : String
-    , command : String
+    }
+
+
+type alias TimeInfo =
+    { current : Time.Posix
+    , zone : Time.Zone
+    }
+
+
+type alias TitleState =
+    { displayed : String
+    , remaining : String
     , typing : Bool
     }
 
@@ -30,20 +41,32 @@ type alias Link =
 
 
 type Msg
-    = TypeCommand
-    | StopTyping
-    | DelayTypeCommand Int
+    = ContinueTyping
+    | CompleteTyping
+    | ScheduleNextCharacter Int
     | TimeUpdate Time.Posix
     | AdjustTimeZone Time.Zone
 
 
-type alias StyledText =
+type alias PromptSegment =
     { text : String, style : String }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model (Time.millisToPosix 0) Time.utc "λ" "" "./onn.sh" True, getTime )
+    ( { time =
+            { current = Time.millisToPosix 0
+            , zone = Time.utc
+            }
+      , title =
+            { typing = True
+            , displayed = ""
+            , remaining = "./onn.sh"
+            }
+      , prompt = "λ"
+      }
+    , getTime
+    )
 
 
 main : Program () Model Msg
@@ -54,20 +77,20 @@ main =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        TypeCommand ->
-            ( typeCommand model, Random.generate DelayTypeCommand (Random.int 100 1000) )
+        ContinueTyping ->
+            ( processNextCharacter model, Random.generate ScheduleNextCharacter (Random.int 100 1000) )
 
-        StopTyping ->
-            ( { model | typing = False }, Cmd.none )
+        CompleteTyping ->
+            ( { model | title = { displayed = model.title.displayed, remaining = model.title.remaining, typing = False } }, Cmd.none )
 
-        DelayTypeCommand delay ->
-            ( model, Process.sleep (toFloat delay) |> Task.perform (always TypeCommand) )
+        ScheduleNextCharacter delay ->
+            ( model, Process.sleep (toFloat delay) |> Task.perform (always ContinueTyping) )
 
         TimeUpdate time ->
-            ( { model | currentTime = time }, Task.perform AdjustTimeZone Time.here )
+            ( { model | time = { current = time, zone = model.time.zone } }, Task.perform AdjustTimeZone Time.here )
 
         AdjustTimeZone zone ->
-            ( { model | timeZone = zone }, Cmd.none )
+            ( { model | time = { current = model.time.current, zone = zone } }, Cmd.none )
 
 
 padInt : Int -> String
@@ -83,10 +106,10 @@ view : Model -> Html msg
 view model =
     let
         hour =
-            padInt (Time.toHour model.timeZone model.currentTime)
+            padInt (Time.toHour model.time.zone model.time.current)
 
         minute =
-            padInt (Time.toMinute model.timeZone model.currentTime)
+            padInt (Time.toMinute model.time.zone model.time.current)
 
         time =
             hour ++ ":" ++ minute
@@ -95,33 +118,48 @@ view model =
         [ class "flex flex-col min-h-screen dark:bg-catppuccin-mocha-mantle bg-catppuccin-latte-mantle p-2 leading-tight" ]
         [ Icon.css
         , promptTopRow <| promptTopParts time
-        , lazy title model
+        , title model
         , linkIcons
         ]
 
 
-typeCommand : Model -> Model
-typeCommand model =
-    if String.isEmpty model.command then
-        { model | typing = False }
+processNextCharacter : Model -> Model
+processNextCharacter model =
+    if String.isEmpty model.title.remaining then
+        { model | title = { displayed = model.title.displayed, remaining = model.title.remaining, typing = False } }
 
     else
-        { model
-            | title_text = model.title_text ++ String.left 1 model.command
-            , command = String.dropLeft 1 model.command
-        }
+        let
+            nextChar =
+                String.left 1 model.title.remaining
+
+            remaining =
+                String.dropLeft 1 model.title.remaining
+
+            newTitle =
+                { displayed = model.title.displayed ++ nextChar
+                , remaining = remaining
+                , typing = model.title.typing
+                }
+        in
+        { model | title = newTitle }
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
-        [ if model.typing then
-            Time.every 500 (always TypeCommand)
+        [ if model.title.typing then
+            Time.every 500 (always ContinueTyping)
 
           else
             Sub.none
         , Time.every 1000 TimeUpdate
         ]
+
+
+shouldBlink : Model -> Bool
+shouldBlink model =
+    not model.title.typing
 
 
 title : Model -> Html msg
@@ -130,12 +168,12 @@ title model =
         [ h1
             [ class titleFontStyle, class "dark:text-catppuccin-mocha-muave text-catppuccin-latte-muave pr-6 font-bold" ]
             [ text model.prompt ]
-        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-text text-catppuccin-latte-text" ] [ text model.title_text ]
-        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-overlay text-catppuccin-latte-overlay flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
+        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-text text-catppuccin-latte-text" ] [ text model.title.displayed ]
+        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-overlay text-catppuccin-latte-overlay flex", classList [ ( "animate-blink", shouldBlink model ) ] ] [ text "▇" ]
         ]
 
 
-promptTopRow : List StyledText -> Html msg
+promptTopRow : List PromptSegment -> Html msg
 promptTopRow parts =
     parts
         |> List.map (\part -> div [ class part.style ] [ text part.text ])
@@ -143,15 +181,15 @@ promptTopRow parts =
             [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none" ]
 
 
-promptTopParts : String -> List StyledText
+promptTopParts : String -> List PromptSegment
 promptTopParts time =
-    [ StyledText time "text-catppuccin-latte-green dark:text-catppuccin-mocha-green pr-4"
-    , StyledText "-" "text-catppuccin-latte-peach dark:text-catppuccin-mocha-peach pr-4"
-    , StyledText "sonnen" "text-catppuccin-latte-maroon dark:text-catppuccin-mocha-maroon"
-    , StyledText "@onnen.dev" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire pr-4"
-    , StyledText "[" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
-    , StyledText "~" "text-catppuccin-latte-subtext dark:text-catppuccin-mocha-subtext"
-    , StyledText "]" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
+    [ PromptSegment time "text-catppuccin-latte-green dark:text-catppuccin-mocha-green pr-4"
+    , PromptSegment "-" "text-catppuccin-latte-peach dark:text-catppuccin-mocha-peach pr-4"
+    , PromptSegment "sonnen" "text-catppuccin-latte-maroon dark:text-catppuccin-mocha-maroon"
+    , PromptSegment "@onnen.dev" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire pr-4"
+    , PromptSegment "[" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
+    , PromptSegment "~" "text-catppuccin-latte-subtext dark:text-catppuccin-mocha-subtext"
+    , PromptSegment "]" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
     ]
 
 
