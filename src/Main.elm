@@ -106,23 +106,30 @@ padInt num =
 
 view : Model -> Html msg
 view model =
-    let
-        hour =
-            padInt (Time.toHour model.time.zone model.time.current)
-
-        minute =
-            padInt (Time.toMinute model.time.zone model.time.current)
-
-        time =
-            hour ++ ":" ++ minute
-    in
     div
         [ class "flex flex-col min-h-screen dark:bg-catppuccin-mocha-mantle bg-catppuccin-latte-mantle p-2 leading-tight" ]
         [ Icon.css
-        , promptTopRow <| promptTopParts time
-        , title model
+        , headerBar model
+        , terminalDisplay model
         , linkIcons
         ]
+
+
+headerBar : Model -> Html msg
+headerBar model =
+    promptTopRow <| promptTopParts (formatTime model.time)
+
+
+formatTime : TimeInfo -> String
+formatTime timeInfo =
+    let
+        hour =
+            padInt (Time.toHour timeInfo.zone timeInfo.current)
+
+        minute =
+            padInt (Time.toMinute timeInfo.zone timeInfo.current)
+    in
+    hour ++ ":" ++ minute
 
 
 processNextCharacter : Model -> Model
@@ -168,15 +175,31 @@ shouldBlink model =
     not model.title.typing
 
 
-title : Model -> Html msg
-title model =
+terminalDisplay : Model -> Html msg
+terminalDisplay model =
     div [ class "flex flex-row" ]
         [ h1
-            [ class titleFontStyle, class "dark:text-catppuccin-mocha-muave text-catppuccin-latte-muave pr-6 font-bold" ]
+            [ class titleFontStyle
+            , class "dark:text-catppuccin-mocha-muave text-catppuccin-latte-muave pr-6 font-bold"
+            ]
             [ text model.prompt ]
-        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-text text-catppuccin-latte-text" ] [ text model.title.displayed ]
-        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-overlay text-catppuccin-latte-overlay flex", classList [ ( "animate-blink", shouldBlink model ) ] ] [ text "▇" ]
+        , h1
+            [ class titleFontStyle
+            , class "dark:text-catppuccin-mocha-text text-catppuccin-latte-text"
+            ]
+            [ text model.title.displayed ]
+        , cursorView <| shouldBlink model
         ]
+
+
+cursorView : Bool -> Html msg
+cursorView isBlinking =
+    h1
+        [ class titleFontStyle
+        , class "dark:text-catppuccin-mocha-overlay text-catppuccin-latte-overlay flex"
+        , classList [ ( "animate-blink", isBlinking ) ]
+        ]
+        [ text "▇" ]
 
 
 promptTopRow : List PromptSegment -> Html msg
