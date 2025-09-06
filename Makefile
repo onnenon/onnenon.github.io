@@ -16,6 +16,6 @@ build: css copy-static
 live:
 	elm-live src/Main.elm --pushstate --startpage=./dist/index.html --dir=./dist -- --output=dist/main.js
 
-build-release:
+build-release: copy-static
 	npx @tailwindcss/cli -i ./src/input.css -o ./dist/styles.css --minify
 	elm make src/Main.elm --optimize --output=dist/main.js
