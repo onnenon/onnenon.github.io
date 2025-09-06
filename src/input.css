@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --font-*: initial;
@@ -27,6 +27,28 @@
   --color-prime-light-gray: #484f58;
   --color-prime-light-black: #1f2328;
   --color-prime-light-white: #f6f8fa;
+
+  --color-catppuccin-latte-base: hsl(220deg, 23%, 95%);
+  --color-catppuccin-latte-muave: hsl(266deg, 85%, 58%);
+  --color-catppuccin-latte-text: hsl(234deg, 16%, 35%);
+  --color-catppuccin-latte-subtext: hsl(233deg, 10%, 47%);
+  --color-catppuccin-latte-green: hsl(109deg, 58%, 40%);
+  --color-catppuccin-latte-peach: hsl(22deg, 99%, 52%);
+  --color-catppuccin-latte-overlay: hsl(231deg, 10%, 59%);
+  --color-catppuccin-latte-mantle: hsl(220deg, 22%, 92%);
+  --color-catppuccin-latte-maroon: hsl(355deg, 76%, 59%);
+  --color-catppuccin-latte-sapphire: hsl(189deg, 70%, 42%);
+
+  --color-catppuccin-mocha-base: hsl(240deg, 21%, 15%);
+  --color-catppuccin-mocha-muave: hsl(267deg, 84%, 81%);
+  --color-catppuccin-mocha-text: hsl(226deg, 64%, 88%);
+  --color-catppuccin-mocha-subtext: hsl(228deg, 24%, 72%);
+  --color-catppuccin-mocha-green: hsl(115deg, 54%, 76%);
+  --color-catppuccin-mocha-peach: hsl(23deg, 92%, 75%);
+  --color-catppuccin-mocha-overlay: hsl(230deg, 13%, 55%);
+  --color-catppuccin-mocha-mantle: hsl(240deg, 21%, 12%);
+  --color-catppuccin-mocha-maroon: hsl(350deg, 65%, 77%);
+  --color-catppuccin-mocha-sapphire: hsl(199deg, 76%, 69%);
 
   --animate-blink: blink 1.2s step-end infinite;
 

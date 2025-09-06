@@ -92,7 +92,7 @@ view model =
             hour ++ ":" ++ minute
     in
     div
-        [ class "flex flex-col min-h-screen dark:bg-prime-dark-black bg-prime-light-white p-2 leading-tight" ]
+        [ class "flex flex-col min-h-screen dark:bg-catppuccin-mocha-mantle bg-catppuccin-latte-mantle p-2 leading-tight" ]
         [ Icon.css
         , promptTopRow <| promptTopParts time
         , lazy title model
@@ -128,10 +128,10 @@ title : Model -> Html msg
 title model =
     div [ class "flex flex-row" ]
         [ h1
-            [ class titleFontStyle, class "dark:text-prime-dark-purple text-prime-light-purple pr-6 font-bold" ]
+            [ class titleFontStyle, class "dark:text-catppuccin-mocha-muave text-catppuccin-latte-muave pr-6 font-bold" ]
             [ text model.prompt ]
-        , h1 [ class titleFontStyle, class "dark:text-prime-dark-white text-prime-light-black" ] [ text model.title_text ]
-        , h1 [ class titleFontStyle, class "text-prime-dark-gray flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
+        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-text text-catppuccin-latte-text" ] [ text model.title_text ]
+        , h1 [ class titleFontStyle, class "dark:text-catppuccin-mocha-overlay text-catppuccin-latte-overlay flex", classList [ ( "animate-blink", not model.typing ) ] ] [ text "▇" ]
         ]
 
 
@@ -143,15 +143,28 @@ promptTopRow parts =
             [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none" ]
 
 
+
+-- promptTopParts : String -> List StyledText
+-- promptTopParts time =
+--     [ StyledText time "text-prime-light-green dark:text-prime-dark-red pr-4"
+--     , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
+--     , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
+--     , StyledText "@onnen.dev" "text-prime-light-blue dark:text-prime-dark-blue pr-4"
+--     , StyledText "[" "text-prime-light-blue dark:text-prime-dark-blue"
+--     , StyledText "~" "text-prime-light-gray dark:text-prime-dark-gray"
+--     , StyledText "]" "text-prime-light-blue dark:text-prime-dark-blue"
+--     ]
+
+
 promptTopParts : String -> List StyledText
 promptTopParts time =
-    [ StyledText time "text-prime-light-green dark:text-prime-dark-red pr-4"
-    , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
-    , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
-    , StyledText "@onnen.dev" "text-prime-light-blue dark:text-prime-dark-blue pr-4"
-    , StyledText "[" "text-prime-light-blue dark:text-prime-dark-blue"
-    , StyledText "~" "text-prime-light-gray dark:text-prime-dark-gray"
-    , StyledText "]" "text-prime-light-blue dark:text-prime-dark-blue"
+    [ StyledText time "text-catppuccin-latte-green dark:text-catppuccin-mocha-green pr-4"
+    , StyledText "-" "text-catppuccin-latte-peach dark:text-catppuccin-mocha-peach pr-4"
+    , StyledText "sonnen" "text-catppuccin-latte-maroon dark:text-catppuccin-mocha-maroon"
+    , StyledText "@onnen.dev" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire pr-4"
+    , StyledText "[" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
+    , StyledText "~" "text-catppuccin-latte-subtext dark:text-catppuccin-mocha-subtext"
+    , StyledText "]" "text-catppuccin-latte-sapphire dark:text-catppuccin-mocha-sapphire"
     ]
 
 
@@ -173,7 +186,7 @@ linkIcon : Link -> Html msg
 linkIcon link =
     a
         [ class "shrink  md:text-4xl text-[7vw] p-[.8em] md:p-[1em]"
-        , class "text-prime-light-gray dark:text-prime-dark-gray dark:hover:text-prime-dark-white hover:text-prime-light-black"
+        , class "text-catppuccin-latte-overlay dark:text-catppuccin-mocha-overlay dark:hover:text-catppuccin-mocha-subtext hover:text-catppuccin-latte-subtext"
         , href link.url
         ]
         [ Icon.view link.icon ]
