@@ -143,19 +143,6 @@ promptTopRow parts =
             [ class "flex md:text-4xl text-[4.5vw] font-mono mb-2 font-bold select-none" ]
 
 
-
--- promptTopParts : String -> List StyledText
--- promptTopParts time =
---     [ StyledText time "text-prime-light-green dark:text-prime-dark-red pr-4"
---     , StyledText "-" "text-prime-light-yellow dark:text-prime-dark-yellow pr-4"
---     , StyledText "sonnen" "text-prime-light-purple dark:text-prime-dark-purple"
---     , StyledText "@onnen.dev" "text-prime-light-blue dark:text-prime-dark-blue pr-4"
---     , StyledText "[" "text-prime-light-blue dark:text-prime-dark-blue"
---     , StyledText "~" "text-prime-light-gray dark:text-prime-dark-gray"
---     , StyledText "]" "text-prime-light-blue dark:text-prime-dark-blue"
---     ]
-
-
 promptTopParts : String -> List StyledText
 promptTopParts time =
     [ StyledText time "text-catppuccin-latte-green dark:text-catppuccin-mocha-green pr-4"
